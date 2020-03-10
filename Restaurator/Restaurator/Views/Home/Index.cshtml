@@ -1,4 +1,466 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
+<body id="homepage">
+    <div class="page-content">
+        <!-- NAV + TOP PART OF PAGE -->
+        <section id="homepage-top">
+            <div class="background-img-container">
+                <div class="background-img">
+                    <!-- NAV -->
+                    <section id="nav-bar" class="nav-bar">
+                        <div class="container">
+                            <div class="nav">
+                                <div class="logo col-sm-12 col-md-5 col-lg-2">
+                                    <h1><a href="./home.html">Restaurator</a></h1>
+                                </div>
+                                <div class="nav-menu nav-desktop col-sm-12 col-md-7 col-lg-4">
+                                    <ul>
+                                        <li><a href="home.html">Home</a></li>
+                                        <li><a href="#restaurants-list">Places</a></li>
+                                        <li><a href="register.html">Register</a></li>
+                                        <li><a href="login.html">Login</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- NAV -->
+
+                    <div class="margin-465"></div>
+
+                    <!-- PAGE TOP HEADING -->
+                    <div class="top-heading">
+                        <h1 class="heading1" data-aos="fade-right" data-aos-duration="3000"
+                            data-aos-easing="ease-in-out" data-aos-once="true">
+                            Lounges
+                        </h1>
+                        <h1 class="heading2" data-aos="fade-left" data-aos-duration="3000" data-aos-easing="ease-in-out"
+                            data-aos-once="true">
+                            &Dinning
+                        </h1>
+                        <p class="baku" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="ease-in-out"
+                           data-aos-once="true">BAKU</p>
+                    </div>
+                    <!-- PAGE TOP HEADING -->
+
+                </div>
+            </div>
+        </section>
+        <div class="margin-75"></div>
+        <!-- NAV + TOP PART OF PAGE -->
+        <!-- HELP OPTIONS -->
+        <section id="how-we-help" class="three-circles-withpic">
+            <div class="container">
+                <div class="section-heading" style="margin-top: -7px;">
+                    <h1>How We Can Help You</h1>
+                    <hr>
+                </div>
+                <div class="circles-options col-lg-12 col-md-12 col-sm-12">
+                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-up" data-aos-duration="1200"
+                         data-aos-easing="ease-in-out" data-aos-once="true" data-aos-anchor-placement="top-center">
+                        <div class="circles-image">
+                            <img src="./assets/img/home-img/picture3.png" alt="img1">
+                        </div>
+                        <div class="circles-text">
+                            <h1><span>Best</span> of the Best</h1>
+                            <p>
+                                We help you to find a place<br>
+                                for your maximum comfort and<br>
+                                best quality time!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-down"
+                         data-aos-duration="1200" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-once="true"
+                         data-aos-anchor-placement="top-center">
+                        <div class="circles-image">
+                            <img src="./assets/img/home-img/picture2.png" alt="img2">
+                        </div>
+                        <div class="circles-text">
+                            <h1><span>Honest</span> Information</h1>
+                            <p>
+                                All the information is verified by<br>
+                                the customers in comments section!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-up" data-aos-delay="400"
+                         data-aos-duration="1200" data-aos-easing="ease-in-out" data-aos-once="true"
+                         data-aos-anchor-placement="top-center">
+                        <div class="circles-image">
+                            <img src="./assets/img/home-img/picture1.png" alt="img3">
+                        </div>
+                        <div class="circles-text">
+                            <h1><span>Comfortable</span> Interface</h1>
+                            <p>
+                                Find all the information you need,<br>
+                                make reservations directly from our page!<br>
+                                We would like to help you as much as we can.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="margin-75"></div>
+        <!-- HELP OPTIONS -->
+        <!-- RESTAURANTS LIST -->
+        <section id="restaurants-list">
+            <div class="section-heading">
+                <h1>Any Kind Of Places For You</h1>
+                <hr>
+            </div>
+            <div class="category-buttons col-lg-5 col-md-10 col-xl-5">
+                <div class="button-group place-type" id="btn-type">
+                    <button class="button active" onclick="filterSelection('all')">
+                        <i class="fas fa-infinity"></i><br>All
+                    </button>
+                    <button class="button" onclick="filterSelection('cafe')">
+                        <i class="fas fa-utensils"></i><br>Cafe
+                    </button>
+                    <button class="button" onclick="filterSelection('restaurant')">
+                        <i class="fas fa-wine-glass-alt"></i><br>Restaurant
+                    </button>
+                    <button class="button" onclick="filterSelection('bar')">
+                        <i class="fas fa-cocktail"></i><br>Bar
+                    </button>
+                    <button class="button" onclick="filterSelection('coffeeshop')">
+                        <i class="fas fa-coffee"></i><br>Coffee Shop
+                    </button>
+                    <button class="button" onclick="filterSelection('dessert')">
+                        <i class="fas fa-ice-cream"></i><br>
+                        Dessert
+                    </button>
+                    <button class="button" onclick="filterSelection('casual')">
+                        <i class="fas fa-fish"></i><br>
+                        Casual
+                    </button>
+                    <button class="button" onclick="filterSelection('family')">
+                        <i class="fas fa-user-friends"></i><br>Family
+                    </button>
+                    <button class="button" onclick="filterSelection('national')">
+                        <i class="fas fa-drumstick-bite"></i><br> National
+                    </button>
+                    <button class="button" onclick="filterSelection('eastern')">
+                        <i class="fas fa-pepper-hot"></i><br>
+                        Eastern
+                    </button>
+                </div>
+            </div>
+
+            <!-- GRID DESKTOP -->
+            <div class="grid desktop col-lg-12 col-md-12">
+                <div class="place family cafe col-lg-12 col-md-12">
+                    <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/malacannes/malacannes-main.jpg" alt="malacannes">
+                    </div>
+                    <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info-text">
+                            <h2 style="padding: 17px;">Malacannes 145</h2>
+                            <p>
+                                Molocan garden has its own fame as one of the oldest and beautiful parks in the Baku
+                                city. And so does the “Malacannes”, a lounge format restaurant located at this lovely
+                                green spot. If you have sweet tooth for desserts and looking for delightful breakfast,
+                                “Malacannes” is a perfect place for you, as it’s widely known for both.
+                            </p>
+                            <h6><span>Place type:</span> Cafe, Family</h6>
+                            <a href="./place-malacannes.html">See More...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="place bar restaurant col-lg-12 col-md-12">
+                    <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info-text">
+                            <h2>Maya Mexican</h2>
+                            <p>
+                                If you're looking for authentic Mexican atmosphere, the music reminds you of a colorful,
+                                cheerful atmosphere, MAYA Mexican Restaurant & Bar is for you! Menu Variety MAYA Mexican
+                                Restaurant & Bar will suit even the most discerning palates.
+                            </p>
+                            <h6><span>Place type:</span> Restaurant, Bar</h6>
+                            <a href="./place-maya.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-lg-6 col-md-6" data-aos="fade-left" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/mayamexican/maya-main.jpg" alt="mayamexican" style="width:auto">
+                    </div>
+                </div>
+                <div class="place coffeeshop col-lg-12 col-md-12">
+                    <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/coffeestation/coffeest-background2.jpg" alt="coffeestation">
+                    </div>
+                    <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info-text">
+                            <h2>Coffee Station</h2>
+                            <p>
+                                Great place to have a nice coffee and meet with friends. Very comforting and pleasing
+                                atmosphere!
+                            </p>
+                            <h6><span>Place type:</span> Coffee Shop</h6>
+                            <a href="./place-coffeest.html">See More...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="place dessert family col-lg-12 col-md-12">
+                    <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info-text">
+                            <h2>Lviv</h2>
+                            <p>
+                                One of the best places with delicious desserts in Baku. Various chocolate types straight
+                                from Lviv!
+                            </p>
+                            <h6><span>Place type:</span> Dessert, Family</h6>
+                            <a href="./place-lviv.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-lg-6 col-md-6" data-aos="fade-left" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/lviv/lviv-main1.jpg" alt="lviv" style="bottom: 64px;
+                    height: 133%;
+                    position: relative;">
+                    </div>
+                </div>
+                <div class="place restaurant casual family col-lg-12 col-md-12">
+                    <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/lavenue/lavenue-main.jpg" alt="lavenue">
+                    </div>
+                    <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info-text">
+                            <h2>L'avenue</h2>
+                            <p>
+                                A unique place conceived in the heart of the boulevard. Beautiful garden surrounds the
+                                original architecture of the L'Avenue without ever touching it.
+                            </p>
+                            <h6><span>Place type:</span> Restaurant, Family</h6>
+                            <a href="./place-lavenue.html">See More...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="place restaurant eastern col-lg-12 col-md-12">
+                    <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info-text">
+                            <h2>Yuka Kaiten</h2>
+                            <p>
+                                A very unique place to have the best sushi in the city, which are made by a japanese
+                                chef.
+                            </p>
+                            <h6><span>Place type:</span> Restaurant, Eastern</h6>
+                            <a href="./place-yuka.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-lg-6 col-md-6" data-aos="fade-left" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/yukakaiten/yuka-main1.jpg" alt="yukaKaiten">
+                    </div>
+                </div>
+                <div class="place restaurant national col-lg-12 col-md-12">
+                    <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/sumakh/sumakh1.jpg" alt="sumakh">
+                    </div>
+                    <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info-text">
+                            <h2>Sumakh</h2>
+                            <p>
+                                The Azerbaijani restaurant consists of a large space perfectly suitable for dining with
+                                family, friends or business meetings as well as for bigger format events, such as
+                                birthday celebrations and a smaller private space for enjoying your meal in a smaller
+                                circle.
+                            </p>
+                            <h6><span>Place type:</span> Restaurant, National</h6>
+                            <a href="./place-sumakh.html">See More...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="place restaurant casual family col-lg-12 col-md-12">
+                    <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info-text">
+                            <h2>Marivanna</h2>
+                            <p>
+                                Most welcoming restaurant! Cozy breathtaking atmosphere and homefood is waiting for you.
+                            </p>
+                            <h6><span>Place type: </span>Restaurant, Casual, Family</h6>
+                            <a href="./place-marivanna.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-lg-6 col-md-6" data-aos="fade-left" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/marivanna/marivanna-main1.jpg" alt="marivanna">
+                    </div>
+                </div>
+            </div>
+            <!-- GRID DESKTOP -->
+            <!-- GRID MOBILE -->
+            <div class="grid mobile">
+                <div class="place family cafe col-md-12 col-sm-12">
+                    <div class="place-info col-md-6 col-sm-12">
+                        <div class="place-info-text">
+                            <h2 style="padding: 17px;">Malacannes 145</h2>
+                            <p>
+                                Molocan garden has its own fame as one of the oldest and beautiful parks in the Baku
+                                city. And so does the “Malacannes”, a lounge format restaurant located at this lovely
+                                green spot. If you have sweet tooth for desserts and looking for delightful breakfast,
+                                “Malacannes” is a perfect place for you, as it’s widely known for both.
+                            </p>
+                            <h6><span>Place type:</span> Cafe, Family</h6>
+                            <a href="./place-malacannes.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/malacannes/malacannes-main.jpg" alt="malacannes">
+                    </div>
+                </div>
+                <div class="place bar restaurant col-md-12 col-sm-12">
+                    <div class="place-info col-md-6 col-sm-12">
+                        <div class="place-info-text">
+                            <h2>Maya Mexican</h2>
+                            <p>
+                                If you're looking for authentic Mexican atmosphere, the music reminds you of a colorful,
+                                cheerful atmosphere, MAYA Mexican Restaurant & Bar is for you! Menu Variety MAYA Mexican
+                                Restaurant & Bar will suit even the most discerning palates.
+                            </p>
+                            <h6><span>Place type:</span> Restaurant, Bar</h6>
+                            <a href="./place-maya.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-md-6 col-sm-12" data-aos="fade-left" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/mayamexican/maya-main.jpg" alt="mayamexican" style="width:auto">
+                    </div>
+                </div>
+                <div class="place coffeeshop col-md-12 col-sm-12">
+                    <div class="place-info col-lg-6 col-md-12 col-sm-12">
+                        <div class="place-info-text">
+                            <h2>Coffee Station</h2>
+                            <p>
+                                Great place to have a nice coffee and meet with friends. Very comforting and pleasing
+                                atmosphere!
+                            </p>
+                            <h6><span>Place type:</span> Coffee Shop</h6>
+                            <a href="./place-coffeest.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/coffeestation/coffeest-background2.jpg" alt="coffeestation">
+                    </div>
+                </div>
+                <div class="place dessert family col-md-12 col-sm-12">
+                    <div class="place-info col-lg-6 col-md-12 col-sm-12">
+                        <div class="place-info-text">
+                            <h2>Lviv</h2>
+                            <p>
+                                One of the best places with delicious desserts in Baku. Various chocolate types straight
+                                from Lviv!
+                            </p>
+                            <h6><span>Place type:</span> Dessert, Family</h6>
+                            <a href="./place-lviv.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-md-6 col-sm-12" data-aos="fade-left" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/lviv/lviv-main1.jpg" alt="lviv" style="bottom: 64px;
+                    height: 133%;
+                    position: relative;">
+                    </div>
+                </div>
+                <div class="place restaurant casual family col-md-12 col-sm-12">
+                    <div class="place-info col-md-6 col-sm-12">
+                        <div class="place-info-text">
+                            <h2>L'avenue</h2>
+                            <p>
+                                A unique place conceived in the heart of the boulevard. Beautiful garden surrounds the
+                                original architecture of the L'Avenue without ever touching it.
+                            </p>
+                            <h6><span>Place type:</span> Restaurant, Family</h6>
+                            <a href="./place-lavenue.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/lavenue/lavenue-main.jpg" alt="lavenue">
+                    </div>
+                </div>
+                <div class="place restaurant eastern col-md-12 col-sm-12">
+                    <div class="place-info col-md-6 col-sm-12">
+                        <div class="place-info-text">
+                            <h2>Yuka Kaiten</h2>
+                            <p>
+                                A very unique place to have the best sushi in the city, which are made by a japanese
+                                chef.
+                            </p>
+                            <h6><span>Place type:</span> Restaurant, Eastern</h6>
+                            <a href="./place-yuka.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-md-6 col-sm-12" data-aos="fade-left" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/yukakaiten/yuka-main1.jpg" alt="yukaKaiten">
+                    </div>
+                </div>
+                <div class="place restaurant national col-md-12 col-sm-12">
+                    <div class="place-info col-md-6 col-sm-12">
+                        <div class="place-info-text">
+                            <h2>Sumakh</h2>
+                            <p>
+                                The Azerbaijani restaurant consists of a large space perfectly suitable for dining with
+                                family, friends or business meetings as well as for bigger format events, such as
+                                birthday celebrations and a smaller private space for enjoying your meal in a smaller
+                                circle.
+                            </p>
+                            <h6><span>Place type:</span> Restaurant, National</h6>
+                            <a href="./place-sumakh.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/sumakh/sumakh1.jpg" alt="sumakh">
+                    </div>
+                </div>
+                <div class="place restaurant casual family col-md-12 col-sm-12">
+                    <div class="place-info col-md-6 col-sm-12">
+                        <div class="place-info-text">
+                            <h2>Marivanna</h2>
+                            <p>
+                                Most welcoming restaurant! Cozy breathtaking atmosphere and homefood is waiting for you.
+                            </p>
+                            <h6><span>Place type: </span>Restaurant, Casual, Family</h6>
+                            <a href="./place-marivanna.html">See More...</a>
+                        </div>
+                    </div>
+                    <div class="place-image col-md-6 col-sm-12" data-aos="fade-left" data-aos-duration="1300"
+                         data-aos-easing="ease-in-out" data-aos-once="true">
+                        <img src="./assets/img/Places/marivanna/marivanna-main1.jpg" alt="marivanna">
+                    </div>
+                </div>
+            </div>
+            <!-- GRID MOBILE -->
+        </section>
+        <!-- RESTAURANTS LIST -->
+        <!-- FOOTER -->
+        <footer>
+            <div class="container">
+                <div class="footer-content col-lg-12">
+                    <div class="logo col-sm-12 col-md-12 col-lg-4">
+                        <h1><a href="./home.html">Restaurator</a></h1>
+                    </div>
+                    <div class="footer-text col-sm-12 col-md-12 col-lg-4">
+                        <h6>Baku, Azerbaijan</h6>
+                    </div>
+                    <div class="footer-menu col-sm-12 col-md-12 col-lg-4">
+                        <p>Contact: +99450 3077977</p>
+                        <p>Mail: ofelyaar@code.edu.az</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- FOOTER -->
+    </div>
+</body>
