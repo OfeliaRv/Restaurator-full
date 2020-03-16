@@ -17,7 +17,14 @@ namespace Restaurator.Models
 
         [Required]
         [MaxLength(150)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+        
+        [Required]
+        [MaxLength(150)]
+        [Compare("Password")]
+        [DataType(DataType.Password)]
+        public string repeatPassword { get; set; }
 
         [MaxLength(100)]
         public string Token { get; set; }

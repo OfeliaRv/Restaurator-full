@@ -1,4 +1,6 @@
-﻿@{
+﻿@inject IAuth Auth
+@model ReservationViewModel
+@{
     ViewData["Title"] = "Marivanna";
 }
 
@@ -13,15 +15,27 @@
                         <div class="container">
                             <div class="nav">
                                 <div class="logo col-sm-12 col-md-5 col-lg-2">
-                                    <h1><a href="./home.html">Restaurator</a></h1>
+                                    <h1><a asp-controller="Home" asp-action="index">Restaurator</a></h1>
                                 </div>
                                 <div class="nav-menu nav-desktop col-sm-12 col-md-6 col-lg-5">
                                     <ul>
-                                        <li><a href="home.html">Home</a></li>
+                                        <li><a asp-controller="Home" asp-action="index">Home</a></li>
                                         <li><a href="#reservation">Reservation</a></li>
                                         <li><a href="#contacts">Contacts</a></li>
-                                        <li><a href="register.html">Register</a></li>
-                                        <li><a href="login.html">Login</a></li>
+                                        @if (Auth.User == null)
+                                        {
+                                            <li><a asp-controller="Register" asp-action="index">Register</a></li>
+                                            <li><a asp-controller="Login" asp-action="index">Login</a></li>
+                                        }
+                                        @if (Auth.User != null)
+                                        {
+                                            <li>
+                                                <a><i class="fa fa-user mr-1"></i> <span>@Auth.User.Fullname</span></a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Login" asp-action="logout"><i class="dropdown-icon icon icon-power mr-1"></i><span>Log Out</span></a>
+                                            </li>
+                                        }
                                         <li>
                                             <a href="https://www.instagram.com/marivannabaku/?hl=en">
                                                 <i class="fab fa-instagram"></i>
@@ -37,11 +51,23 @@
                                 <i class="nav-icon material-icons">dehaze</i>
                                 <div class="nav-menu nav-mobile col-sm-12 col-md-7 col-lg-5">
                                     <ul>
-                                        <li><a href="home.html">Home</a></li>
+                                        <li><a asp-controller="Home" asp-action="index">Home</a></li>
                                         <li><a href="#reservation">Reservation</a></li>
                                         <li><a href="#contacts">Contacts</a></li>
-                                        <li><a href="register.html">Register</a></li>
-                                        <li><a href="login.html">Login</a></li>
+                                        @if (Auth.User == null)
+                                        {
+                                            <li><a asp-controller="Register" asp-action="index">Register</a></li>
+                                            <li><a asp-controller="Login" asp-action="index">Login</a></li>
+                                        }
+                                        @if (Auth.User != null)
+                                        {
+                                            <li>
+                                                <a><i class="fa fa-user mr-1"></i> <span>@Auth.User.Fullname</span></a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Login" asp-action="logout"><i class="dropdown-icon icon icon-power mr-1"></i><span>Log Out</span></a>
+                                            </li>
+                                        }
                                         <li>
                                             <a href="https://www.instagram.com/marivannabaku/?hl=en">
                                                 <i class="fab fa-instagram"></i>
@@ -84,7 +110,7 @@
                     <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-up" data-aos-duration="1200"
                          data-aos-easing="ease-in-out" data-aos-once="true" data-aos-anchor-placement="top-center">
                         <div class="circles-image">
-                            <img src="./assets/img/Places/marivanna/pic1.jpg" alt="coffee" style="height: 341px;">
+                            <img src="../img/Places/marivanna/pic1.jpg" alt="coffee" style="height: 341px;">
                         </div>
                         <div class="circles-text">
                             <h1><span>Beautiful</span> Serving</h1>
@@ -95,7 +121,7 @@
                          data-aos-duration="1200" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-once="true"
                          data-aos-anchor-placement="top-center">
                         <div class="circles-image">
-                            <img src="./assets/img/Places/marivanna/pic2.jpg" alt="coffee">
+                            <img src="../img/Places/marivanna/pic2.jpg" alt="coffee">
                         </div>
                         <div class="circles-text">
                             <h1><span>Tasty</span> Breakfast</h1>
@@ -106,7 +132,7 @@
                          data-aos-duration="1200" data-aos-easing="ease-in-out" data-aos-once="true"
                          data-aos-anchor-placement="top-center">
                         <div class="circles-image">
-                            <img src="./assets/img/Places/marivanna/pic3.jpg" alt="coffee" style="height: 338px;
+                            <img src="../img/Places/marivanna/pic3.jpg" alt="coffee" style="height: 338px;
                             width: 341px;">
                         </div>
                         <div class="circles-text">
@@ -125,7 +151,7 @@
                 <div class="place col-lg-12 col-md-12">
                     <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/marivanna/marivanna-background2.jpg" alt="marivanna">
+                        <img src="../img/Places/marivanna/marivanna-background2.jpg" alt="marivanna">
                     </div>
                     <div class="place-info col-lg-6 col-md-6">
                         <div class="place-info-text">
@@ -143,7 +169,7 @@
                     </div>
                     <div class="place-image col-lg-6 col-md-6" data-aos="fade-left" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/marivanna/marivanna-main1.jpg" alt="coffee">
+                        <img src="../img/Places/marivanna/marivanna-main1.jpg" alt="coffee">
                     </div>
                 </div>
             </div>
@@ -160,7 +186,7 @@
                     </div>
                     <div class="place-image col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/marivanna/marivanna-background2.jpg" alt="marivanna">
+                        <img src="../img/Places/marivanna/marivanna-background2.jpg" alt="marivanna">
                     </div>
                 </div>
                 <div class="place col-md-12 col-sm-12">
@@ -171,7 +197,7 @@
                     </div>
                     <div class="place-image col-md-6 col-sm-12" data-aos="fade-left" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/marivanna/marivanna-main1.jpg" alt="coffee">
+                        <img src="../img/Places/marivanna/marivanna-main1.jpg" alt="coffee">
                     </div>
                 </div>
             </div>
@@ -186,7 +212,7 @@
                 <div class="container">
                     <div class="menu-card-container col-lg-11 col-md-12 col-sm-12">
                         <div class="menu-icon col-lg-1">
-                            <img src="./assets/img/menu/menu-icon.png" alt="menu-icon">
+                            <img src="../img/menu/menu-icon.png" alt="menu-icon">
                         </div>
                         <div class="section-heading">
                             <h1>Our Best Dishes</h1>
@@ -359,14 +385,14 @@
                         <div class="reservation-content">
                             <form class="reservation-form col-lg-10" method="post">
                                 <div class="form-row" id="row1">
-                                    <input type="text" placeholder="Full Name">
-                                    <input type="text" placeholder="Phone Number">
+                                    <input type="text" asp-for="Fullname" placeholder="Full Name">
+                                    <input type="text" asp-for="Phone" placeholder="Phone Number">
                                 </div>
                                 <div class="form-row" id="row2">
-                                    <input type="text" placeholder="Number of persons">
-                                    <input type="date">
-                                    <select name="" id="">
-                                        <option value="Time">Time</option>
+                                    <input type="text" asp-for="numOfPersons" placeholder="Number of persons">
+                                    <input type="date" asp-for="Date">
+                                    <select asp-for="Time">
+                                        <option value="0">Time</option>
                                         <option value="09:00">09:00</option>
                                         <option value="09:30">09:30</option>
                                         <option value="10:00">10:00</option>
@@ -439,7 +465,7 @@
             <div class="container">
                 <div class="footer-content col-lg-12">
                     <div class="logo col-sm-12 col-md-5 col-lg-4">
-                        <h1><a href="./home.html">Restaurator</a></h1>
+                        <h1><a asp-controller="Home" asp-action="index">Restaurator</a></h1>
                     </div>
                     <div class="footer-text col-sm-12 col-md-5 col-lg-4">
                         <h6>Baku, Azerbaijan</h6>

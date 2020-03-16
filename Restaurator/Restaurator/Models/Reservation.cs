@@ -7,6 +7,8 @@ namespace Restaurator.Models
     {
         public int Id { get; set; }
 
+        public int placeId { get; set; }
+       
         [Required]
         [MaxLength(100)]
         public string Fullname { get; set; }
@@ -22,7 +24,9 @@ namespace Restaurator.Models
         public DateTime Time { get; set; }
 
         [Required]
-        public int NumOfSeats { get; set; }
+        public int numOfPersons { get; set; }
+
+        public Place Place { get; set; }
 
     }
 }

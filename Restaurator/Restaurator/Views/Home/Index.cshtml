@@ -1,4 +1,5 @@
-﻿@{
+﻿@inject IAuth Auth
+@{
     ViewData["Title"] = "Home";
 }
 
@@ -13,14 +14,41 @@
                         <div class="container">
                             <div class="nav">
                                 <div class="logo col-sm-12 col-md-5 col-lg-2">
-                                    <h1><a href="./home.html">Restaurator</a></h1>
+                                    <h1><a asp-controller="Home" asp-action="index">Restaurator</a></h1>
                                 </div>
                                 <div class="nav-menu nav-desktop col-sm-12 col-md-7 col-lg-4">
                                     <ul>
-                                        <li><a href="home.html">Home</a></li>
+                                        <li><a asp-controller="Home" asp-action="index">Home</a></li>
                                         <li><a href="#restaurants-list">Places</a></li>
-                                        <li><a href="register.html">Register</a></li>
-                                        <li><a href="login.html">Login</a></li>
+                                        @if (Auth.User == null)
+                                        {
+                                            <li><a asp-controller="Register" asp-action="index">Register</a></li>
+                                            <li><a asp-controller="Login" asp-action="index">Login</a></li>
+                                        }
+                                        @if (Auth.User != null)
+                                        {
+                                            <li>
+                                                <a><i class="fa fa-user mr-1"></i> <span>@Auth.User.Fullname</span></a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                                <i class="nav-icon material-icons">dehaze</i>
+                                <div class="nav-menu nav-mobile col-sm-12 col-md-7 col-lg-5">
+                                    <ul>
+                                        <li><a asp-controller="Home" asp-action="index">Home</a></li>
+                                        <li><a href="#restaurants-list">Places</a></li>
+                                        @if (Auth.User == null)
+                                        {
+                                            <li><a asp-controller="Register" asp-action="index">Register</a></li>
+                                            <li><a asp-controller="Login" asp-action="index">Login</a></li>
+                                        }
+                                        @if (Auth.User != null)
+                                        {
+                                            <li>
+                                                <a><i class="fa fa-user mr-1"></i> <span>@Auth.User.Fullname</span></a>
+                                            </li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -61,7 +89,7 @@
                     <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-up" data-aos-duration="1200"
                          data-aos-easing="ease-in-out" data-aos-once="true" data-aos-anchor-placement="top-center">
                         <div class="circles-image">
-                            <img src="./assets/img/home-img/picture3.png" alt="img1">
+                            <img src="../img/home-img/picture3.png" alt="img1">
                         </div>
                         <div class="circles-text">
                             <h1><span>Best</span> of the Best</h1>
@@ -76,7 +104,7 @@
                          data-aos-duration="1200" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-once="true"
                          data-aos-anchor-placement="top-center">
                         <div class="circles-image">
-                            <img src="./assets/img/home-img/picture2.png" alt="img2">
+                            <img src="../img/home-img/picture2.png" alt="img2">
                         </div>
                         <div class="circles-text">
                             <h1><span>Honest</span> Information</h1>
@@ -90,7 +118,7 @@
                          data-aos-duration="1200" data-aos-easing="ease-in-out" data-aos-once="true"
                          data-aos-anchor-placement="top-center">
                         <div class="circles-image">
-                            <img src="./assets/img/home-img/picture1.png" alt="img3">
+                            <img src="../img/home-img/picture1.png" alt="img3">
                         </div>
                         <div class="circles-text">
                             <h1><span>Comfortable</span> Interface</h1>
@@ -155,7 +183,7 @@
                 <div class="place family cafe col-lg-12 col-md-12">
                     <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/malacannes/malacannes-main.jpg" alt="malacannes">
+                        <img src="../img/Places/malacannes/malacannes-main.jpg" alt="malacannes">
                     </div>
                     <div class="place-info col-lg-6 col-md-6">
                         <div class="place-info-text">
@@ -167,7 +195,7 @@
                                 “Malacannes” is a perfect place for you, as it’s widely known for both.
                             </p>
                             <h6><span>Place type:</span> Cafe, Family</h6>
-                            <a href="./place-malacannes.html">See More...</a>
+                            <a asp-controller="Malacannes" asp-action="index">See More...</a>
                         </div>
                     </div>
                 </div>
@@ -181,18 +209,18 @@
                                 Restaurant & Bar will suit even the most discerning palates.
                             </p>
                             <h6><span>Place type:</span> Restaurant, Bar</h6>
-                            <a href="./place-maya.html">See More...</a>
+                            <a asp-controller="MayaMexican" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-lg-6 col-md-6" data-aos="fade-left" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/mayamexican/maya-main.jpg" alt="mayamexican" style="width:auto">
+                        <img src="../img/Places/mayamexican/maya-main.jpg" alt="mayamexican" style="width:auto">
                     </div>
                 </div>
                 <div class="place coffeeshop col-lg-12 col-md-12">
                     <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/coffeestation/coffeest-background2.jpg" alt="coffeestation">
+                        <img src="../img/Places/coffeestation/coffeest-background2.jpg" alt="coffeestation">
                     </div>
                     <div class="place-info col-lg-6 col-md-6">
                         <div class="place-info-text">
@@ -202,7 +230,7 @@
                                 atmosphere!
                             </p>
                             <h6><span>Place type:</span> Coffee Shop</h6>
-                            <a href="./place-coffeest.html">See More...</a>
+                            <a asp-controller="CoffeeStation" asp-action="index">See More...</a>
                         </div>
                     </div>
                 </div>
@@ -215,12 +243,12 @@
                                 from Lviv!
                             </p>
                             <h6><span>Place type:</span> Dessert, Family</h6>
-                            <a href="./place-lviv.html">See More...</a>
+                            <a asp-controller="Lviv" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-lg-6 col-md-6" data-aos="fade-left" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/lviv/lviv-main1.jpg" alt="lviv" style="bottom: 64px;
+                        <img src="../img/Places/lviv/lviv-main1.jpg" alt="lviv" style="bottom: 64px;
                     height: 133%;
                     position: relative;">
                     </div>
@@ -228,7 +256,7 @@
                 <div class="place restaurant casual family col-lg-12 col-md-12">
                     <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/lavenue/lavenue-main.jpg" alt="lavenue">
+                        <img src="../img/Places/lavenue/lavenue-main.jpg" alt="lavenue">
                     </div>
                     <div class="place-info col-lg-6 col-md-6">
                         <div class="place-info-text">
@@ -238,7 +266,7 @@
                                 original architecture of the L'Avenue without ever touching it.
                             </p>
                             <h6><span>Place type:</span> Restaurant, Family</h6>
-                            <a href="./place-lavenue.html">See More...</a>
+                            <a asp-controller="Lavenue" asp-action="index">See More...</a>
                         </div>
                     </div>
                 </div>
@@ -251,18 +279,18 @@
                                 chef.
                             </p>
                             <h6><span>Place type:</span> Restaurant, Eastern</h6>
-                            <a href="./place-yuka.html">See More...</a>
+                            <a asp-controller="Yuka" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-lg-6 col-md-6" data-aos="fade-left" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/yukakaiten/yuka-main1.jpg" alt="yukaKaiten">
+                        <img src="../img/Places/yukakaiten/yuka-main1.jpg" alt="yukaKaiten">
                     </div>
                 </div>
                 <div class="place restaurant national col-lg-12 col-md-12">
                     <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/sumakh/sumakh1.jpg" alt="sumakh">
+                        <img src="../img/Places/sumakh/sumakh1.jpg" alt="sumakh">
                     </div>
                     <div class="place-info col-lg-6 col-md-6">
                         <div class="place-info-text">
@@ -274,7 +302,7 @@
                                 circle.
                             </p>
                             <h6><span>Place type:</span> Restaurant, National</h6>
-                            <a href="./place-sumakh.html">See More...</a>
+                            <a asp-controller="Sumakh" asp-action="index">See More...</a>
                         </div>
                     </div>
                 </div>
@@ -286,12 +314,12 @@
                                 Most welcoming restaurant! Cozy breathtaking atmosphere and homefood is waiting for you.
                             </p>
                             <h6><span>Place type: </span>Restaurant, Casual, Family</h6>
-                            <a href="./place-marivanna.html">See More...</a>
+                            <a asp-controller="Marivanna" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-lg-6 col-md-6" data-aos="fade-left" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/marivanna/marivanna-main1.jpg" alt="marivanna">
+                        <img src="../img/Places/marivanna/marivanna-main1.jpg" alt="marivanna">
                     </div>
                 </div>
             </div>
@@ -309,12 +337,12 @@
                                 “Malacannes” is a perfect place for you, as it’s widely known for both.
                             </p>
                             <h6><span>Place type:</span> Cafe, Family</h6>
-                            <a href="./place-malacannes.html">See More...</a>
+                            <a asp-controller="Malacannes" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/malacannes/malacannes-main.jpg" alt="malacannes">
+                        <img src="../img/Places/malacannes/malacannes-main.jpg" alt="malacannes">
                     </div>
                 </div>
                 <div class="place bar restaurant col-md-12 col-sm-12">
@@ -327,12 +355,12 @@
                                 Restaurant & Bar will suit even the most discerning palates.
                             </p>
                             <h6><span>Place type:</span> Restaurant, Bar</h6>
-                            <a href="./place-maya.html">See More...</a>
+                            <a asp-controller="MayaMexican" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-md-6 col-sm-12" data-aos="fade-left" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/mayamexican/maya-main.jpg" alt="mayamexican" style="width:auto">
+                        <img src="../img/Places/mayamexican/maya-main.jpg" alt="mayamexican" style="width:auto">
                     </div>
                 </div>
                 <div class="place coffeeshop col-md-12 col-sm-12">
@@ -344,12 +372,12 @@
                                 atmosphere!
                             </p>
                             <h6><span>Place type:</span> Coffee Shop</h6>
-                            <a href="./place-coffeest.html">See More...</a>
+                            <a asp-controller="CoffeeStation" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/coffeestation/coffeest-background2.jpg" alt="coffeestation">
+                        <img src="../img/Places/coffeestation/coffeest-background2.jpg" alt="coffeestation">
                     </div>
                 </div>
                 <div class="place dessert family col-md-12 col-sm-12">
@@ -361,12 +389,12 @@
                                 from Lviv!
                             </p>
                             <h6><span>Place type:</span> Dessert, Family</h6>
-                            <a href="./place-lviv.html">See More...</a>
+                            <a asp-controller="Lviv" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-md-6 col-sm-12" data-aos="fade-left" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/lviv/lviv-main1.jpg" alt="lviv" style="bottom: 64px;
+                        <img src="../img/Places/lviv/lviv-main1.jpg" alt="lviv" style="bottom: 64px;
                     height: 133%;
                     position: relative;">
                     </div>
@@ -380,12 +408,12 @@
                                 original architecture of the L'Avenue without ever touching it.
                             </p>
                             <h6><span>Place type:</span> Restaurant, Family</h6>
-                            <a href="./place-lavenue.html">See More...</a>
+                            <a asp-controller="Lavenue" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/lavenue/lavenue-main.jpg" alt="lavenue">
+                        <img src="../img/Places/lavenue/lavenue-main.jpg" alt="lavenue">
                     </div>
                 </div>
                 <div class="place restaurant eastern col-md-12 col-sm-12">
@@ -397,12 +425,12 @@
                                 chef.
                             </p>
                             <h6><span>Place type:</span> Restaurant, Eastern</h6>
-                            <a href="./place-yuka.html">See More...</a>
+                            <a asp-controller="Yuka" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-md-6 col-sm-12" data-aos="fade-left" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/yukakaiten/yuka-main1.jpg" alt="yukaKaiten">
+                        <img src="../img/Places/yukakaiten/yuka-main1.jpg" alt="yukaKaiten">
                     </div>
                 </div>
                 <div class="place restaurant national col-md-12 col-sm-12">
@@ -416,12 +444,12 @@
                                 circle.
                             </p>
                             <h6><span>Place type:</span> Restaurant, National</h6>
-                            <a href="./place-sumakh.html">See More...</a>
+                            <a asp-controller="Sumakh" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/sumakh/sumakh1.jpg" alt="sumakh">
+                        <img src="../img/Places/sumakh/sumakh1.jpg" alt="sumakh">
                     </div>
                 </div>
                 <div class="place restaurant casual family col-md-12 col-sm-12">
@@ -432,12 +460,12 @@
                                 Most welcoming restaurant! Cozy breathtaking atmosphere and homefood is waiting for you.
                             </p>
                             <h6><span>Place type: </span>Restaurant, Casual, Family</h6>
-                            <a href="./place-marivanna.html">See More...</a>
+                            <a asp-controller="Marivanna" asp-action="index">See More...</a>
                         </div>
                     </div>
                     <div class="place-image col-md-6 col-sm-12" data-aos="fade-left" data-aos-duration="1300"
                          data-aos-easing="ease-in-out" data-aos-once="true">
-                        <img src="./assets/img/Places/marivanna/marivanna-main1.jpg" alt="marivanna">
+                        <img src="../img/Places/marivanna/marivanna-main1.jpg" alt="marivanna">
                     </div>
                 </div>
             </div>
@@ -449,7 +477,7 @@
             <div class="container">
                 <div class="footer-content col-lg-12">
                     <div class="logo col-sm-12 col-md-12 col-lg-4">
-                        <h1><a href="./home.html">Restaurator</a></h1>
+                        <h1><a asp-controller="Home" asp-action="index">Restaurator</a></h1>
                     </div>
                     <div class="footer-text col-sm-12 col-md-12 col-lg-4">
                         <h6>Baku, Azerbaijan</h6>

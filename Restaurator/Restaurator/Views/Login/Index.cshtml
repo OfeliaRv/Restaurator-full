@@ -1,4 +1,5 @@
-﻿@{
+﻿@model LoginViewModel
+@{
     ViewData["Title"] = "Login";
 }
 
@@ -13,12 +14,12 @@
                     <div class="container">
                         <div class="nav">
                             <div class="logo col-sm-12 col-md-5 col-lg-2">
-                                <h1><a href="./home.html">Restaurator</a></h1>
+                                <h1><a asp-controller="Home" asp-action="index">Restaurator</a></h1>
                             </div>
                             <div class="nav-menu col-sm-12 col-md-6 col-lg-4">
                                 <ul>
-                                    <li><a href="home.html">Home</a></li>
-                                    <li><a href="register.html">Register</a></li>
+                                    <li><a  asp-controller="Home" asp-action="index">Home</a></li>
+                                    <li><a  asp-controller="Register" asp-action="index">Register</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -44,10 +45,10 @@
                 <form>
                     <h5>Welcome back, dear customer!</h5>
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email address">
+                        <input type="email" asp-for="Email" class="form-control" placeholder="Email address">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" asp-for="Password" class="form-control" placeholder="Password">
                     </div>
                     <div class="form-btn">
                         <button type="submit" class="btn btn-primary">Log In</button>
@@ -63,15 +64,15 @@
         <div class="container">
             <div class="footer-content col-lg-12">
                 <div class="logo col-sm-12 col-md-5 col-lg-4">
-                    <h1><a href="./home.html">Restaurator</a></h1>
+                    <h1><a asp-controller="Home" asp-action="index">Restaurator</a></h1>
                 </div>
                 <div class="footer-text col-sm-12 col-md-5 col-lg-4">
                     <h6>Baku, Azerbaijan</h6>
                 </div>
                 <div class="footer-menu col-sm-12 col-md-12 col-lg-4">
                     <ul>
-                        <li><a href="./home.html">Home</a></li>
-                        <li><a href="register.html">Register</a></li>
+                        <li><a asp-controller="Home" asp-action="index">Home</a></li>
+                        <li><a asp-controller="Register" asp-action="index">Register</a></li>
                     </ul>
                 </div>
             </div>

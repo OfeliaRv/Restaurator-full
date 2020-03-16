@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Restaurator.Data;
+using Restaurator.Injection;
 
 namespace Restaurator
 {
@@ -30,7 +31,7 @@ namespace Restaurator
 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            //services.AddTransient<IAuth, Auth>();
+            services.AddTransient<IAuth, Auth>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

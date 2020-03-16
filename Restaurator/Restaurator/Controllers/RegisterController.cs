@@ -38,19 +38,29 @@ namespace Restaurator.Controllers
                         Email = Register.Email,
                         Fullname = Register.Fullname,
                         Password = Crypto.HashPassword(Register.Password),
+                        repeatPassword = Register.repeatPassword,
                         Token = Guid.NewGuid().ToString()
                     };
 
-                    _context.Users.Add(user);
-                    _context.SaveChanges();
-
-                    Response.Cookies.Append("token", user.Token, new Microsoft.AspNetCore.Http.CookieOptions
+                    if (user.repeatPassword == user.Password)
                     {
-                        Expires = DateTime.Now.AddYears(1),
-                        HttpOnly = true
-                    });
+                        _context.Users.Add(user);
+                        _context.SaveChanges();
 
-                    return RedirectToAction("index", "home");
+
+                        Response.Cookies.Append("token", user.Token, new Microsoft.AspNetCore.Http.CookieOptions
+                        {
+                            Expires = DateTime.Now.AddYears(1),
+                            HttpOnly = true
+                        });
+
+                        return RedirectToAction("index", "home");
+                    }
+
+                    else
+                    {
+                        ModelState.AddModelError("Password", "Passwords don't match");
+                    }
                 }
 
                 ModelState.AddModelError("Email", "This Email is already registered");
