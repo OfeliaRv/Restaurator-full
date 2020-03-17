@@ -8,7 +8,7 @@ namespace Restaurator.Models
         
         [Required]
         [MaxLength(5)]
-        public double Rating { get; set; }
+        public decimal Rating { get; set; }
 
         [Required]
         [MaxLength(500)]
@@ -16,6 +16,6 @@ namespace Restaurator.Models
 
         public Place Place { get; set; }
 
-        public User Username { get; set; }
+        public int UserId { get; set; }
     }
 }

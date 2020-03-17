@@ -9,10 +9,12 @@ namespace Restaurator.Models
 
         [MaxLength(50)]
         public string Name { get; set; }
+        
+        public List<Reservation> Reservations { get; set; }
 
-        //public List<string> Images { get; set; }
+        //public List<PlaceImage> PlaceImages { get; set; }
 
-        public double Rating { get; set; }
+        public List<Comment> Comments { get; set; }
+        public decimal Rating { get; set; }
     }
-
 }

@@ -26,6 +26,9 @@ namespace Restaurator.Models
         [DataType(DataType.Password)]
         public string repeatPassword { get; set; }
 
+        [MaxLength(500)]
+        public Comment Comment { get; set; }
+        
         [MaxLength(100)]
         public string Token { get; set; }
     }

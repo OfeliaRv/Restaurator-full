@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurator.Data;
 
 namespace Restaurator.Migrations
 {
     [DbContext(typeof(RestauratorDbContext))]
-    partial class RestauratorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200317145252_updateUserPlaceComment")]
+    partial class updateUserPlaceComment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,8 +35,8 @@ namespace Restaurator.Migrations
                     b.Property<int?>("PlaceId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Rating")
-                        .HasColumnType("decimal(18,2)")
+                    b.Property<double>("Rating")
+                        .HasColumnType("float")
                         .HasMaxLength(5);
 
                     b.Property<int>("UserId")
@@ -61,8 +63,8 @@ namespace Restaurator.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<decimal>("Rating")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Rating")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

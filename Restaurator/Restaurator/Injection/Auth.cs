@@ -2,6 +2,7 @@
 using Restaurator.Models;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Restaurator.Injection
 {
@@ -34,7 +35,7 @@ namespace Restaurator.Injection
                     return null;
                 }
 
-                User user = _context.Users.FirstOrDefault(c => c.Token == token);
+                User user = _context.Users.Include("Comment").FirstOrDefault(c => c.Token == token);
 
                 if (user == null)
                 {

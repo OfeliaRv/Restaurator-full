@@ -42,8 +42,8 @@ namespace Restaurator.Controllers
                         Token = Guid.NewGuid().ToString()
                     };
 
-                    if (user.repeatPassword == user.Password)
-                    {
+                    //if (user.repeatPassword == user.Password)
+                    //{
                         _context.Users.Add(user);
                         _context.SaveChanges();
 
@@ -55,12 +55,12 @@ namespace Restaurator.Controllers
                         });
 
                         return RedirectToAction("index", "home");
-                    }
+                    //}
 
-                    else
-                    {
-                        ModelState.AddModelError("Password", "Passwords don't match");
-                    }
+                    //else
+                    //{
+                        //ModelState.AddModelError("Password", "Passwords don't match");
+                    //}
                 }
 
                 ModelState.AddModelError("Email", "This Email is already registered");

@@ -389,7 +389,7 @@
                             <hr>
                         </div>
                         <div class="reservation-content">
-                            <form class="reservation-form col-lg-10" method="post">
+                            <form class="reservation-form col-lg-10" asp-controller="Reservation" asp-action="MakeReservation" method="post">
                                 <div class="form-row" id="row1">
                                     <input type="text" asp-for="Fullname" placeholder="Full Name">
                                     <input type="text" asp-for="Phone" placeholder="Phone Number">

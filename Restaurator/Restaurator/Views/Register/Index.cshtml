@@ -17,8 +17,8 @@
                             </div>
                             <div class="nav-menu col-sm-12 col-md-6 col-lg-4">
                                 <ul>
-                                    <li><a href="home.html">Home</a></li>
-                                    <li><a href="login.html">Login</a></li>
+                                    <li><a asp-controller="Home" asp-action="index">Home</a></li>
+                                    <li><a asp-controller="Login" asp-action="index">Login</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -41,19 +41,23 @@
     <div class="authentication-form">
         <div class="container">
             <div class="form-container col-lg-6 col-md-8 col-sm-12">
-                <form>
+                <form asp-controller="Register" asp-action="register" method="post">
                     <h5>Welcome!<br> Register and share your opinion on services.</h5>
                     <div class="form-group">
                         <input type="text" asp-for="Fullname" class="form-control" placeholder="Full Name">
+                        <span asp-validation-for="Fullname"></span>
                     </div>
                     <div class="form-group">
                         <input type="email" asp-for="Email" class="form-control" placeholder="Email address">
+                        <span class="text-danger" asp-validation-for="Email"></span>
                     </div>
                     <div class="form-group">
                         <input type="password" asp-for="Password" class="form-control" placeholder="Password">
+                        <span class="text-danger"  asp-validation-for="Password"></span>
                     </div>
                     <div class="form-group">
                         <input type="password" asp-for="repeatPassword" class="form-control" placeholder="Repeat Password">
+                        <span class="text-danger" asp-validation-for="repeatPassword"></span>
                     </div>
                     <div class="form-btn">
                         <button type="submit" class="btn btn-primary">Register</button>
