@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Restaurator.Models
 {
@@ -12,10 +13,17 @@ namespace Restaurator.Models
 
         [Required]
         [MaxLength(500)]
-        public int CommentText { get; set; }
+        public string CommentText { get; set; }
+       
+        public int PlaceId { get; set; }
+        
+        public int UserId { get; set; }
+
+        [Required]
+        public DateTime CreatedAt { get; set; }
+
+        public User User { get; set; }
 
         public Place Place { get; set; }
-
-        public int UserId { get; set; }
     }
 }

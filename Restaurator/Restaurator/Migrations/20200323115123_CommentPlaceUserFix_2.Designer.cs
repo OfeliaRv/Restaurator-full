@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurator.Data;
 
 namespace Restaurator.Migrations
 {
     [DbContext(typeof(RestauratorDbContext))]
-    partial class RestauratorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200323115123_CommentPlaceUserFix_2")]
+    partial class CommentPlaceUserFix_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,8 +50,7 @@ namespace Restaurator.Migrations
 
                     b.HasIndex("PlaceId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -93,18 +94,18 @@ namespace Restaurator.Migrations
                         .HasColumnType("nvarchar(30)")
                         .HasMaxLength(30);
 
-                    b.Property<int>("PlaceId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("numOfPersons")
                         .HasColumnType("int");
 
+                    b.Property<int>("placeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("PlaceId");
+                    b.HasIndex("placeId");
 
                     b.ToTable("Reservations");
                 });
@@ -154,8 +155,8 @@ namespace Restaurator.Migrations
                         .IsRequired();
 
                     b.HasOne("Restaurator.Models.User", "User")
-                        .WithOne("Comment")
-                        .HasForeignKey("Restaurator.Models.Comment", "UserId")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -164,7 +165,7 @@ namespace Restaurator.Migrations
                 {
                     b.HasOne("Restaurator.Models.Place", "Place")
                         .WithMany("Reservations")
-                        .HasForeignKey("PlaceId")
+                        .HasForeignKey("placeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

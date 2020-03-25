@@ -7,7 +7,7 @@ namespace Restaurator.Models
     {
         public int Id { get; set; }
 
-        public int placeId { get; set; }
+        public int PlaceId { get; set; }
        
         [Required]
         [MaxLength(100)]

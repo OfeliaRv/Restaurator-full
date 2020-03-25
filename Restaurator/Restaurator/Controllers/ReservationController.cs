@@ -23,17 +23,16 @@ namespace Restaurator.Controllers
         [HttpPost]
         public IActionResult MakeReservation(ReservationViewModel model)
         {
-            Place place = new Place();
             if (ModelState.IsValid)
             {
                 Reservation reservation = new Reservation
                 {
+                    PlaceId = model.PlaceId,
                     Fullname = model.Fullname,
                     Phone = model.Phone,
                     numOfPersons = model.numOfPersons,
                     Date = model.Date,
-                    Time = model.Time,
-                    placeId = place.Id,
+                    Time = model.Time
                 };
 
                 _context.Reservations.Add(reservation);

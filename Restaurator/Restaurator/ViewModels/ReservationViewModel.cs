@@ -5,6 +5,8 @@ namespace Restaurator.ViewModels
 {
     public class ReservationViewModel
     {
+        public int PlaceId { get; set; }
+
         [Required(ErrorMessage = "This field is required.")]
         [MaxLength(50, ErrorMessage = "Maximum number of characters is 50.")]
         public string Fullname { get; set; }

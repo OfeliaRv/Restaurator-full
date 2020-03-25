@@ -391,6 +391,7 @@
                         <div class="reservation-content">
                             <form class="reservation-form col-lg-10" method="post">
                                 <div class="form-row" id="row1">
+                                    <input type="hidden" asp-for="PlaceId" value="10" />
                                     <input type="text" asp-for="Fullname" placeholder="Full Name">
                                     <input type="text" asp-for="Phone" placeholder="Phone Number">
                                 </div>
@@ -423,6 +424,10 @@
                                         <option value="19:30">19:30</option>
                                         <option value="20:00">20:00</option>
                                         <option value="20:30">20:30</option>
+                                        <option value="21:00">21:00</option>
+                                        <option value="21:30">21:30</option>
+                                        <option value="22:00">22:00</option>
+                                        <option value="22:30">22:30</option>
                                     </select>
                                 </div>
                                 <button type="submit">Reserve</button>
