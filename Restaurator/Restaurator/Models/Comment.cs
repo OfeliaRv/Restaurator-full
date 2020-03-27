@@ -8,7 +8,7 @@ namespace Restaurator.Models
         public int Id { get; set; }
         
         [Required]
-        [MaxLength(5)]
+        [Range(0,5)]
         public decimal Rating { get; set; }
 
         [Required]

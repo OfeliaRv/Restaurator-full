@@ -1,5 +1,5 @@
 ﻿@inject IAuth Auth
-@model ReservationViewModel
+@model PageViewModel
 @{
     ViewData["Title"] = "Coffee Station";
 }
@@ -364,7 +364,8 @@
                     <div class="add-comment col-lg-6 col-sm-12">
                         <h5>Add your comment about this place...</h5>
                         <form action="post">
-                            <textarea placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
+                            <input type="hidden" asp-for="Comment.PlaceId" value="5" />
+                            <textarea asp-for="Comment.CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
                             <div class="comment-btns">
                                 <div class="stars">
                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
@@ -389,16 +390,16 @@
                             <hr>
                         </div>
                         <div class="reservation-content">
-                            <form class="reservation-form col-lg-10" asp-controller="Reservation" asp-action="MakeReservation" method="post">
+                            <form class="reservation-form col-lg-10" asp-controller="Page" asp-action="MakeReservation" method="post">
                                 <div class="form-row" id="row1">
-                                    <input type="hidden" asp-for="PlaceId" value="5"/>
-                                    <input type="text" asp-for="Fullname" placeholder="Full Name">
-                                    <input type="text" asp-for="Phone" placeholder="Phone Number">
+                                    <input type="hidden" asp-for="Reservation.PlaceId" name="PlaceId" value="5"/>
+                                    <input type="text" asp-for="Reservation.Fullname" name="Fullname" placeholder="Full Name">
+                                    <input type="text" asp-for="Reservation.Phone" name="Phone" placeholder="Phone Number">
                                 </div>
                                 <div class="form-row" id="row2">
-                                    <input type="text" asp-for="numOfPersons" placeholder="Number of persons">
-                                    <input type="date" asp-for="Date">
-                                    <select asp-for="Time">
+                                    <input type="text" asp-for="Reservation.numOfPersons" name="numOfPersons" placeholder="Number of persons">
+                                    <input type="date" asp-for="Reservation.Date" name="Date">
+                                    <select asp-for="Reservation.Time" name="Time">
                                         <option value="0">Time</option>
                                         <option value="09:00">09:00</option>
                                         <option value="09:30">09:30</option>

@@ -3,6 +3,30 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Restaurator.ViewModels
 {
+    public class PageViewModel
+    {
+        public ReservationViewModel Reservation { get; set; }
+        public CommentViewModel Comment { get; set; }
+    }
+
+    public class CommentViewModel
+    {
+        public int PlaceId { get; set; }
+
+        public int UserId { get; set; }
+
+        [Required(ErrorMessage = "This field is required.")]
+        [MaxLength(500, ErrorMessage = "Maximum number of characters is 500.")]
+        public string CommentText { get; set; }
+
+        [Required(ErrorMessage = "This field is required.")]
+        [Range(0, 5)]
+        public decimal Rating { get; set; }
+
+        [Required]
+        public DateTime CreatedAt { get; set; }
+    }
+
     public class ReservationViewModel
     {
         public int PlaceId { get; set; }
