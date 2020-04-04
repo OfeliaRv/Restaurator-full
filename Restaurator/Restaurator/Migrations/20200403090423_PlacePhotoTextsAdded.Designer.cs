@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurator.Data;
 
 namespace Restaurator.Migrations
 {
     [DbContext(typeof(RestauratorDbContext))]
-    partial class RestauratorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200403090423_PlacePhotoTextsAdded")]
+    partial class PlacePhotoTextsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,9 +86,6 @@ namespace Restaurator.Migrations
                     b.Property<decimal>("Rating")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("TopSectionImage")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Places");
@@ -100,12 +99,6 @@ namespace Restaurator.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CircleText")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CircleTextHeading1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CircleTextHeading2")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoInCircle")

@@ -1,51 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Restaurator.Models;
 
 namespace Restaurator.ViewModels
 {
     public class PageViewModel
     {
-        public ReservationViewModel Reservation { get; set; }
-        public CommentViewModel Comment { get; set; }
+        public Place Place { get; set; }
+
+        public List<PlaceInCirclePhoto> PlaceInCirclePhotos { get; set; }
+
+        public Reservation Reservation { get; set; }
+
+        public List<Comment> Comments { get; set; }
+
+        public List<PlaceMenuItem> PlaceMenuItems { get; set; }
+
+        public List<PlacePhoto> PlacePhotos { get; set; }
     }
 
-    public class CommentViewModel
-    {
-        public int PlaceId { get; set; }
+   
 
-        public int UserId { get; set; }
+    //public class ReservationViewModel
+    //{
+    //    public int PlaceId { get; set; }
 
-        [Required(ErrorMessage = "This field is required.")]
-        [MaxLength(500, ErrorMessage = "Maximum number of characters is 500.")]
-        public string CommentText { get; set; }
+    //    [Required(ErrorMessage = "This field is required.")]
+    //    [MaxLength(50, ErrorMessage = "Maximum number of characters is 50.")]
+    //    public string Fullname { get; set; }
 
-        [Required(ErrorMessage = "This field is required.")]
-        [Range(0, 5)]
-        public decimal Rating { get; set; }
+    //    [Required(ErrorMessage = "This field is required.")]
+    //    [MaxLength(25, ErrorMessage = "Maximum number of characters is 25.")]
+    //    public string Phone { get; set; }
 
-        [Required]
-        public DateTime CreatedAt { get; set; }
-    }
+    //    [Required(ErrorMessage = "This field is required.")]
+    //    public int numOfPersons { get; set; }
 
-    public class ReservationViewModel
-    {
-        public int PlaceId { get; set; }
+    //    [Required(ErrorMessage = "This field is required.")]
+    //    public DateTime Date { get; set; }
 
-        [Required(ErrorMessage = "This field is required.")]
-        [MaxLength(50, ErrorMessage = "Maximum number of characters is 50.")]
-        public string Fullname { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        [MaxLength(25, ErrorMessage = "Maximum number of characters is 25.")]
-        public string Phone { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        public int numOfPersons { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        public DateTime Date { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        public DateTime Time { get; set; }
-    }
+    //    [Required(ErrorMessage = "This field is required.")]
+    //    public DateTime Time { get; set; }
+    //}
 }

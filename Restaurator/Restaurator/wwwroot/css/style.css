@@ -210,7 +210,7 @@ option {
 
                 .three-circles-withpic .circles-options .circles-option .circles-text h1 {
                     font-family: "Cormorant Garamond";
-                    font-size: 36px;
+                    font-size: 42px;
                     font-style: italic;
                 }
 
@@ -220,8 +220,8 @@ option {
 
                 .three-circles-withpic .circles-options .circles-option .circles-text p {
                     font-family: "Montserrat";
-                    color: #646464;
-                    font-size: 14px;
+                    color: #333131;
+                    font-size: 16px;
                 }
 
 @media screen and (max-width: 992px) {
@@ -247,6 +247,13 @@ option {
         flex-wrap: wrap;
     }
 
+    .grid .place:nth-child(2n) {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+    }
+
     .grid .place {
         text-align: center;
         color: #3e3e3e;
@@ -264,9 +271,6 @@ option {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
-        border-radius: 10px;
-        -webkit-box-shadow: 0px 15px 45px -9px rgba(0, 0, 0, 0.25);
-        box-shadow: 0px 15px 45px -9px rgba(0, 0, 0, 0.25);
         height: 500px;
         overflow: hidden;
         padding: 0;
@@ -402,6 +406,24 @@ option {
         margin: 0 2px;
     }
 
+.add-comment-section .stars {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    cursor: pointer;
+}
+
+    .add-comment-section .stars > span {
+        display: inline-block;
+        position: relative;
+        width: 1.1em;
+    }
+
+        .add-comment-section .stars > span:hover:before,
+        .add-comment-section .stars > span:hover ~ span:before {
+            content: "\2605";
+            position: absolute;
+        }
+
 .rating-stars {
     height: 244px;
     background-position: bottom;
@@ -494,6 +516,12 @@ option {
         background-size: 64%;
         margin: unset;
     }
+}
+
+.background-img-container .background-img {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
 }
 
 .reservation {
@@ -639,7 +667,6 @@ option {
 
     .contact-us-content .map {
         height: 550px;
-        border-radius: 13px;
         padding: 0 !important;
         overflow: hidden;
     }
@@ -1084,7 +1111,9 @@ option {
 
                     .background-img-container .background-img .nav-bar .nav-menu ul li {
                         list-style-type: none;
-                        width: auto;
+                        width: -webkit-max-content;
+                        width: -moz-max-content;
+                        width: max-content;
                         text-align: center;
                     }
 
@@ -1326,10 +1355,6 @@ footer {
     }
 }
 
-#homepage-top .background-img-container .background-img {
-    background-image: url(../../img/home-img/background-slider.jpg);
-}
-
 #restaurants-list .category-buttons {
     margin: 0 auto;
     padding: 0;
@@ -1479,53 +1504,4 @@ footer {
                 .authorization .authentication-form .form-container form .form-text a {
                     color: orange;
                 }
-
-#malacannes-top .background-img-container .background-img {
-    background-image: url(../../img/Places/malacannes/malacannes-background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#maya-top .background-img-container .background-img {
-    background-image: url(../../img/Places/mayamexican/maya-background1.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#lavenue-top .background-img-container .background-img {
-    background-image: url(../../img/Places/lavenue/lavenue-background.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#yuka-top .background-img-container .background-img {
-    background-image: url(../../img/Places/yukakaiten/yuka-main-b.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#lviv-top .background-img-container .background-img {
-    background-image: url(../../img/Places/lviv/lviv-background2.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#marivanna-top .background-img-container .background-img {
-    background-image: url(../../img/Places/marivanna/marivanna-background1.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}
-
-#coffeest-top .background-img-container .background-img {
-    background-image: url(../../img/Places/coffeestation/coffeest-background1.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#sumakh-top .background-img-container .background-img {
-    background-image: url(../../img/Places/sumakh/sumakh-background1.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
 /*# sourceMappingURL=main.css.map */

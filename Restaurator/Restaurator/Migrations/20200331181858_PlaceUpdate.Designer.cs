@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurator.Data;
 
 namespace Restaurator.Migrations
 {
     [DbContext(typeof(RestauratorDbContext))]
-    partial class RestauratorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200331181858_PlaceUpdate")]
+    partial class PlaceUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,20 +65,12 @@ namespace Restaurator.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FbLink")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InstaLink")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MainImage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NamePt1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NamePt2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("PlaceType")
                         .HasColumnType("nvarchar(max)");
@@ -84,90 +78,9 @@ namespace Restaurator.Migrations
                     b.Property<decimal>("Rating")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("TopSectionImage")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Places");
-                });
-
-            modelBuilder.Entity("Restaurator.Models.PlaceInCirclePhoto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CircleText")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CircleTextHeading1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CircleTextHeading2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhotoInCircle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PlaceId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlaceId");
-
-                    b.ToTable("PlaceInCirclePhotos");
-                });
-
-            modelBuilder.Entity("Restaurator.Models.PlaceMenuItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ItemDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ItemName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ItemPrice")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PlaceId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlaceId");
-
-                    b.ToTable("PlaceMenuItems");
-                });
-
-            modelBuilder.Entity("Restaurator.Models.PlacePhoto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Photo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PlaceId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlaceId");
-
-                    b.ToTable("PlacePhotos");
                 });
 
             modelBuilder.Entity("Restaurator.Models.Reservation", b =>
@@ -253,33 +166,6 @@ namespace Restaurator.Migrations
                     b.HasOne("Restaurator.Models.User", "User")
                         .WithOne("Comment")
                         .HasForeignKey("Restaurator.Models.Comment", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Restaurator.Models.PlaceInCirclePhoto", b =>
-                {
-                    b.HasOne("Restaurator.Models.Place", "Place")
-                        .WithMany("PlaceInCirclePhotos")
-                        .HasForeignKey("PlaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Restaurator.Models.PlaceMenuItem", b =>
-                {
-                    b.HasOne("Restaurator.Models.Place", "Place")
-                        .WithMany("PlaceMenuItems")
-                        .HasForeignKey("PlaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Restaurator.Models.PlacePhoto", b =>
-                {
-                    b.HasOne("Restaurator.Models.Place", "Place")
-                        .WithMany("PlacePhotos")
-                        .HasForeignKey("PlaceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

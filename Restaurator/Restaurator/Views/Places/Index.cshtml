@@ -1,0 +1,253 @@
+﻿@model List<Restaurator.Models.Place>
+@inject IAuth Auth
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<body id="homepage">
+    <div class="page-content">
+        <!-- NAV + TOP PART OF PAGE -->
+        <section id="homepage-top">
+            <div class="background-img-container">
+                <div class="background-img" style="background-image:url(../img/home-img/background-slider.jpg);">
+                    <!-- NAV -->
+                    <section id="nav-bar" class="nav-bar">
+                        <div class="container">
+                            <div class="nav">
+                                <div class="logo col-sm-12 col-md-5 col-lg-2">
+                                    <h1><a asp-controller="Places" asp-action="index">Restaurator</a></h1>
+                                </div>
+                                <div class="nav-menu nav-desktop col-sm-12 col-md-7 col-lg-4">
+                                    <ul>
+                                        <li><a asp-controller="Places" asp-action="index">Home</a></li>
+                                        <li><a href="#restaurants-list">Places</a></li>
+                                        @if (Auth.User == null)
+                                        {
+                                            <li><a asp-controller="Register" asp-action="index">Register</a></li>
+                                            <li><a asp-controller="Login" asp-action="index">Login</a></li>
+                                        }
+                                        @if (Auth.User != null)
+                                        {
+                                            <li>
+                                                <a><i class="fa fa-user mr-1"></i> <span>@Auth.User.Fullname</span></a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Login" asp-action="logout"><i class="dropdown-icon icon icon-power mr-1"></i><span>Log Out</span></a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                                <i class="nav-icon material-icons">dehaze</i>
+                                <div class="nav-menu nav-mobile col-sm-12 col-md-7 col-lg-5">
+                                    <ul>
+                                        <li><a asp-controller="Places" asp-action="index">Home</a></li>
+                                        <li><a href="#restaurants-list">Places</a></li>
+                                        @if (Auth.User == null)
+                                        {
+                                            <li><a asp-controller="Register" asp-action="index">Register</a></li>
+                                            <li><a asp-controller="Login" asp-action="index">Login</a></li>
+                                        }
+                                        @if (Auth.User != null)
+                                        {
+                                            <li>
+                                                <a><i class="fa fa-user mr-1"></i> <span>@Auth.User.Fullname</span></a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- NAV -->
+
+                    <div class="margin-465"></div>
+
+                    <!-- PAGE TOP HEADING -->
+                    <div class="top-heading">
+                        <h1 class="heading1" data-aos="fade-right" data-aos-duration="3000"
+                            data-aos-easing="ease-in-out" data-aos-once="true">
+                            Lounges
+                        </h1>
+                        <h1 class="heading2" data-aos="fade-left" data-aos-duration="3000" data-aos-easing="ease-in-out"
+                            data-aos-once="true">
+                            &Dinning
+                        </h1>
+                        <p class="baku" data-aos="fade-up" data-aos-duration="2000" data-aos-easing="ease-in-out"
+                           data-aos-once="true">BAKU</p>
+                    </div>
+                    <!-- PAGE TOP HEADING -->
+
+                </div>
+            </div>
+        </section>
+        <div class="margin-75"></div>
+        <!-- NAV + TOP PART OF PAGE -->
+        <!-- HELP OPTIONS -->
+        <section id="how-we-help" class="three-circles-withpic">
+            <div class="container">
+                <div class="section-heading" style="margin-top: -7px;">
+                    <h1>How We Can Help You</h1>
+                    <hr>
+                </div>
+                <div class="circles-options col-lg-12 col-md-12 col-sm-12">
+                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-up" data-aos-duration="1200"
+                         data-aos-easing="ease-in-out" data-aos-once="true" data-aos-anchor-placement="top-center">
+                        <div class="circles-image">
+                            <img src="../img/home-img/picture3.png" alt="img1">
+                        </div>
+                        <div class="circles-text">
+                            <h1><span>Best</span> of the Best</h1>
+                            <p>
+                                We help you to find a place<br>
+                                for your maximum comfort and<br>
+                                best quality time!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-down"
+                         data-aos-duration="1200" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-once="true"
+                         data-aos-anchor-placement="top-center">
+                        <div class="circles-image">
+                            <img src="../img/home-img/picture2.png" alt="img2">
+                        </div>
+                        <div class="circles-text">
+                            <h1><span>Honest</span> Information</h1>
+                            <p>
+                                All the information is verified by<br>
+                                the customers in comments section!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-up" data-aos-delay="400"
+                         data-aos-duration="1200" data-aos-easing="ease-in-out" data-aos-once="true"
+                         data-aos-anchor-placement="top-center">
+                        <div class="circles-image">
+                            <img src="../img/home-img/picture1.png" alt="img3">
+                        </div>
+                        <div class="circles-text">
+                            <h1><span>Comfortable</span> Interface</h1>
+                            <p>
+                                Find all the information you need,<br>
+                                make reservations directly from our page!<br>
+                                We would like to help you as much as we can.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="margin-75"></div>
+        <!-- HELP OPTIONS -->
+        <!-- RESTAURANTS LIST -->
+        <section id="restaurants-list">
+            <div class="section-heading">
+                <h1>Any Kind Of Places For You</h1>
+                <hr>
+            </div>
+            <div class="category-buttons col-lg-5 col-md-10 col-xl-5">
+                <div class="button-group place-type" id="btn-type">
+                    <button class="button active" onclick="filterSelection('all')">
+                        <i class="fas fa-infinity"></i><br>All
+                    </button>
+                    <button class="button" onclick="filterSelection('cafe')">
+                        <i class="fas fa-utensils"></i><br>Cafe
+                    </button>
+                    <button class="button" onclick="filterSelection('restaurant')">
+                        <i class="fas fa-wine-glass-alt"></i><br>Restaurant
+                    </button>
+                    <button class="button" onclick="filterSelection('bar')">
+                        <i class="fas fa-cocktail"></i><br>Bar
+                    </button>
+                    <button class="button" onclick="filterSelection('coffeeshop')">
+                        <i class="fas fa-coffee"></i><br>Coffee Shop
+                    </button>
+                    <button class="button" onclick="filterSelection('dessert')">
+                        <i class="fas fa-ice-cream"></i><br>
+                        Dessert
+                    </button>
+                    <button class="button" onclick="filterSelection('casual')">
+                        <i class="fas fa-fish"></i><br>
+                        Casual
+                    </button>
+                    <button class="button" onclick="filterSelection('family')">
+                        <i class="fas fa-user-friends"></i><br>Family
+                    </button>
+                    <button class="button" onclick="filterSelection('national')">
+                        <i class="fas fa-drumstick-bite"></i><br> National
+                    </button>
+                    <button class="button" onclick="filterSelection('eastern')">
+                        <i class="fas fa-pepper-hot"></i><br>
+                        Eastern
+                    </button>
+                </div>
+            </div>
+
+            <!-- GRID DESKTOP -->
+            <div class="grid desktop col-lg-12 col-md-12">
+                @foreach (Place item in Model)
+                {
+                    <div class="place @item.PlaceType.ToLower().Split(',') col-lg-12 col-md-12">
+                        <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
+                             data-aos-easing="ease-in-out" data-aos-once="true">
+                            <img src="../img/Places/@item.MainImage" alt="main">
+                        </div>
+                        <div class="place-info col-lg-6 col-md-6">
+                            <div class="place-info-text">
+                                <h2 style="padding: 17px;">@item.NamePt1 @item.NamePt2</h2>
+                                <p>
+                                    @item.Description
+                                </p>
+                                <h6><span>Place type:</span> @item.PlaceType</h6>
+                                <a asp-route-id=@item.Id asp-controller="Places" asp-action="details">See More...</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- GRID DESKTOP -->
+            <!-- GRID MOBILE -->
+            <div class="grid mobile">
+                @foreach (Place item in Model)
+                {
+                    <div class="place @item.PlaceType.ToLower().Split(',') col-lg-12 col-md-12">
+                        <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
+                             data-aos-easing="ease-in-out" data-aos-once="true">
+                            <img src="../img/Places/@item.MainImage" alt="main">
+                        </div>
+                        <div class="place-info col-lg-6 col-md-6">
+                            <div class="place-info-text">
+                                <h2 style="padding: 17px;">@item.NamePt1 @item.NamePt2 </h2>
+                                <p>
+                                    @item.Description
+                                </p>
+                                <h6><span>Place type:</span> @item.PlaceType</h6>
+                                <a asp-route-id=@item.Id asp-controller="Places" asp-action="details">See More...</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- GRID MOBILE -->
+        </section>
+        <!-- RESTAURANTS LIST -->
+        <!-- FOOTER -->
+        <footer>
+            <div class="container">
+                <div class="footer-content col-lg-12">
+                    <div class="logo col-sm-12 col-md-12 col-lg-4">
+                        <h1><a asp-controller="Places" asp-action="index">Restaurator</a></h1>
+                    </div>
+                    <div class="footer-text col-sm-12 col-md-12 col-lg-4">
+                        <h6>Baku, Azerbaijan</h6>
+                    </div>
+                    <div class="footer-menu col-sm-12 col-md-12 col-lg-4">
+                        <p>Contact: +99450 3077977</p>
+                        <p>Mail: ofelyaar@code.edu.az</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- FOOTER -->
+    </div>
+</body>
