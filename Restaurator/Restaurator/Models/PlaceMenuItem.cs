@@ -10,7 +10,7 @@
        
         public string ItemDescription { get; set; }
         
-        public int ItemPrice { get; set; }
+        public decimal ItemPrice { get; set; }
         
         public Place Place { get; set; }
     }

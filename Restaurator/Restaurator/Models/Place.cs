@@ -22,6 +22,14 @@ namespace Restaurator.Models
 
         public string FbLink { get; set; }
 
+        public string OpenHours { get; set; }
+
+        public string Address { get; set; }
+
+        public string PlacePhone { get; set; }
+
+        public string PlaceMap { get; set; }
+
         public List<Reservation> Reservations { get; set; }
 
         public List<PlacePhoto> PlacePhotos { get; set; }

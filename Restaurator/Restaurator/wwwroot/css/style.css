@@ -108,7 +108,7 @@ option {
         letter-spacing: 8px;
         font-weight: 600;
         font-size: 13px;
-        margin-top: 14px;
+        margin-top: 40px;
         color: #e7e7e0;
     }
 
@@ -461,7 +461,7 @@ option {
 
 @media screen and (max-width: 425px) {
     .rating-and-reviews {
-        margin-top: 122px;
+        margin-top: 165px;
     }
 }
 
@@ -884,12 +884,12 @@ option {
                 flex-wrap: wrap;
             }
 
-                .best-dishes .menu-card .menu-card-container .menu-content .menu-column .menu-item {
+                .best-dishes .menu-card .menu-card-container .menu-content .menu-item {
                     padding: 20px;
-                    margin: 40px 0;
+                    margin: 10px 0;
                 }
 
-                    .best-dishes .menu-card .menu-card-container .menu-content .menu-column .menu-item .dish-heading {
+                    .best-dishes .menu-card .menu-card-container .menu-content .menu-item .dish-heading {
                         display: -webkit-box;
                         display: -ms-flexbox;
                         display: flex;
@@ -898,7 +898,7 @@ option {
                         justify-content: space-between;
                     }
 
-                        .best-dishes .menu-card .menu-card-container .menu-content .menu-column .menu-item .dish-heading h2 {
+                        .best-dishes .menu-card .menu-card-container .menu-content .menu-item .dish-heading h2 {
                             font-family: "Montserrat";
                             color: #646464;
                             font-weight: 300;
@@ -906,13 +906,13 @@ option {
                             margin: 0;
                         }
 
-                        .best-dishes .menu-card .menu-card-container .menu-content .menu-column .menu-item .dish-heading .price {
+                        .best-dishes .menu-card .menu-card-container .menu-content .menu-item .dish-heading .price {
                             font-size: 17px;
                             font-weight: 600;
                             padding: 10px;
                         }
 
-                    .best-dishes .menu-card .menu-card-container .menu-content .menu-column .menu-item hr {
+                    .best-dishes .menu-card .menu-card-container .menu-content .menu-item hr {
                         border: none;
                         border-top: 1px dotted #eee;
                         color: #fff;
@@ -921,14 +921,14 @@ option {
                         width: 100%;
                     }
 
-                    .best-dishes .menu-card .menu-card-container .menu-content .menu-column .menu-item .dish-text {
+                    .best-dishes .menu-card .menu-card-container .menu-content .menu-item .dish-text {
                         font-size: 19px;
                         font-family: "Cormorant Garamond";
                         font-style: italic;
                         height: 50px;
                     }
 
-                        .best-dishes .menu-card .menu-card-container .menu-content .menu-column .menu-item .dish-text p {
+                        .best-dishes .menu-card .menu-card-container .menu-content .menu-item .dish-text p {
                             height: 25px;
                         }
 
@@ -1115,6 +1115,7 @@ option {
                         width: -moz-max-content;
                         width: max-content;
                         text-align: center;
+                        margin: 0 auto;
                     }
 
                         .background-img-container .background-img .nav-bar .nav-menu ul li a {

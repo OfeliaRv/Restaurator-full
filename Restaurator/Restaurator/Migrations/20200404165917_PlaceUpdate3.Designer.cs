@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurator.Data;
 
 namespace Restaurator.Migrations
 {
     [DbContext(typeof(RestauratorDbContext))]
-    partial class RestauratorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200404165917_PlaceUpdate3")]
+    partial class PlaceUpdate3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,8 +148,8 @@ namespace Restaurator.Migrations
                     b.Property<string>("ItemName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("ItemPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("ItemPrice")
+                        .HasColumnType("int");
 
                     b.Property<int>("PlaceId")
                         .HasColumnType("int");

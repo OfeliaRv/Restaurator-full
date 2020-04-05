@@ -193,50 +193,22 @@
                         <hr>
                     </div>
                     <div class="menu-content col-lg-12 col-md-12 col-sm-12">
-                        <div class="menu-column col-lg-6 col-md-6 col-sm-12">
-                            <div class="menu-item col-lg-12 col-md-12 col-sm-12">
+                        @if (Model != null)
+                        {
+                            @foreach (PlaceMenuItem menuItem in Model.Place.PlaceMenuItems)
+                            {
+                            <div class="menu-item col-lg-6 col-md-12 col-sm-12">
                                 <div class="dish-heading">
-                                    <h2>Club Sandwich</h2>
-                                    <h2 class="price">7.80₼</h2>
+                                    <h2>@menuItem.ItemName</h2>
+                                    <h2 class="price">@menuItem.ItemPrice₼</h2>
                                 </div>
                                 <hr>
                                 <div class="dish-text">
-                                    <p>Ham, Cheese, Scrambled Egg, Tomatoes, Lettuce, Picles, Mayo, French Fries</p>
+                                    <p>@menuItem.ItemDescription</p>
                                 </div>
                             </div>
-                            <div class="menu-item col-lg-12 col-md-12 col-sm-12">
-                                <div class="dish-heading">
-                                    <h2>Milkshake</h2>
-                                    <h2 class="price">5.00₼</h2>
-                                </div>
-                                <hr>
-                                <div class="dish-text">
-                                    <p>Strawberry, Chocolate, Banana, Caramel</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="menu-column col-lg-6 col-md-6 col-sm-12">
-                            <div class="menu-item col-lg-12 col-md-12 col-sm-12">
-                                <div class="dish-heading">
-                                    <h2>Caesar Salad</h2>
-                                    <h2 class="price">8.00₼</h2>
-                                </div>
-                                <hr>
-                                <div class="dish-text">
-                                    <p>Lettuce, Caesar sauce, Crisps, Cheese, Tomatoes</p>
-                                </div>
-                            </div>
-                            <div class="menu-item col-lg-12 col-md-12 col-sm-12">
-                                <div class="dish-heading">
-                                    <h2>Tomato soup</h2>
-                                    <h2 class="price">4.00₼</h2>
-                                </div>
-                                <hr>
-                                <div class="dish-text">
-                                    <p>Tomatoes, Salt, Pepper, Lemon Juice, Crisps, Cheese</p>
-                                </div>
-                            </div>
-                        </div>
+                            }
+                        }
                     </div>
                 </div>
             </div>
@@ -270,7 +242,7 @@
                                 </div>
                                 <div class="lowerpart-texts">
                                     <p>
-                                        @Html.DisplayFor(model => model.Comments)
+                                        @item.CommentText
                                     </p>
                                 </div>
                             </div>
@@ -279,20 +251,22 @@
                 }
             </div>
             <div class="add-comment-section">
-                @*<div class="add-comment col-lg-6 col-sm-12">
+                <div class="add-comment col-lg-6 col-sm-12">
                         <h5>Add your comment about this place...</h5>
-                        <form asp-controller="Page" asp-action="AddComment" method="post">
-                            <input type="hidden" asp-for="Comments.PlaceId" name="PlaceId" value="5" />
-                            <textarea asp-for="Comments.CommentText" name="CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
-                            <div class="comment-btns">
-                                <div class="stars">
-                                    <span value="1">☆</span><span value="2">☆</span><span value="3">☆</span><span data-value="4">☆</span><span data-value="5">☆</span>
+                        <form asp-controller="Places" asp-action="AddComment" method="post">
+                            @for (int i = 0; i < Model.Comments.Count; i++)
+                            {
+                                <input type="hidden" asp-for="@Model.Comments[i].PlaceId" name="PlaceId" value="@Model.Place.Id" />
+                                <textarea asp-for="@Model.Comments[i].CommentText" name="CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
+                                <div class="comment-btns">
+                                    <div class="stars">
+                                        <span value="1">☆</span><span value="2">☆</span><span value="3">☆</span><span data-value="4">☆</span><span data-value="5">☆</span>
+                                    </div>
+                                    <button type="submit">Add Comment</button>
                                 </div>
-                                <button type="submit">Add Comment</button>
-                            </div>
                             }
-                        </form>
-                    </div>*@
+                            </form>
+                    </div>
             </div>
         </div>
     </section>
@@ -369,21 +343,21 @@
                 <div class="info">
                     <div class="info-item">
                         <span>Open Hours</span>
-                        <p>09:00 — 0:00</p>
+                        <p>@Model.Place.OpenHours</p>
                     </div>
                     <div class="info-item">
                         <span>Address</span>
-                        <p>Fikret Amirov</p>
+                        <p>@Model.Place.Address</p>
                     </div>
                     <div class="info-item">
                         <span>Phone</span>
-                        <p>+99412 498 89 84</p>
+                        <p>@Model.Place.PlacePhone</p>
                     </div>
                 </div>
             </div>
             <div class="map col-lg-6 col-md-6 col-sm-12">
                 <iframe id="map"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.5142845168643!2d49.84944531525645!3d40.375293079370024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307da974cfcac9%3A0x1ba4159bb14b7af8!2sCoffee%20Station%20Baku!5e0!3m2!1sen!2s!4v1582469197115!5m2!1sen!2s"
+                        src="@Model.Place.PlaceMap"
                         width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
                         data-aos="fade-left" data-aos-duration="1300" data-aos-easing="ease-in-out"
                         data-aos-once="true"></iframe>
