@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Success";
+}
+
+<div class="page-content">
+    <!-- NAV + TOP PART OF PAGE -->
+    <section>
+        <div class="background-img-container">
+            <div class="background-img"
+                 style="background-image: url(/img/background-cards.jpg);">
+                <!-- NAV -->
+                <section id="nav-bar" class="nav-bar">
+                    <div class="container">
+                        <div class="nav">
+                            <div class="logo col-sm-12 col-md-5 col-lg-2">
+                                <h1><a asp-controller="Places" asp-action="index">Restaurator</a></h1>
+                            </div>
+                            <!-- NAV DESKTOP -->
+                            <div class="nav-menu nav-desktop col-sm-12 col-md-6 col-lg-5">
+                                <ul>
+                                    <li><a asp-controller="Places" asp-action="index">Home</a></li>
+                                </ul>
+                            </div>
+                            <!-- NAV DESKTOP -->
+                            <!-- NAV MOBILE -->
+                            <i class="nav-icon material-icons">dehaze</i>
+                            <div class="nav-menu nav-mobile col-sm-12 col-md-7 col-lg-5">
+                                <ul>
+                                    <li><a asp-controller="Places" asp-action="index">Home</a></li>
+                                </ul>
+                            </div>
+                            <!-- NAV MOBILE -->
+                        </div>
+                    </div>
+                </section>
+                <!-- NAV -->
+
+                <div class="margin-465"></div>
+
+                <!-- PAGE TOP HEADING -->
+                <div class="top-heading success">
+                    <h1 class="heading1" data-aos="fade-up" data-aos-duration="2000"
+                        data-aos-easing="ease-in-out" data-aos-once="true">
+                        Your reservation is successfully submitted!
+                    </h1>
+                    <p data-aos="fade-up" data-aos-duration="2000"
+                       data-aos-easing="ease-in-out" data-aos-once="true">Thank you for using our service!</p>
+                </div>
+                <!-- PAGE TOP HEADING -->
+            </div>
+        </div>
+    </section>
+    <!-- NAV + TOP PART OF PAGE -->
+</div>
+

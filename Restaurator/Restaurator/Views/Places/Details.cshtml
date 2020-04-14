@@ -1,6 +1,10 @@
 ﻿@model Restaurator.ViewModels.PageViewModel
 @inject IAuth Auth
 
+@{
+    ViewData["Title"] = Model.Place.NamePt1;
+}
+
 <div class="page-content">
     <!-- NAV + TOP PART OF PAGE -->
     <section>
@@ -13,6 +17,7 @@
                             <div class="logo col-sm-12 col-md-5 col-lg-2">
                                 <h1><a asp-controller="Places" asp-action="index">Restaurator</a></h1>
                             </div>
+                            <!-- NAV DESKTOP -->
                             <div class="nav-menu nav-desktop col-sm-12 col-md-7 col-lg-5">
                                 <ul>
                                     <li><a asp-controller="Places" asp-action="index">Home</a></li>
@@ -44,6 +49,8 @@
                                     </li>
                                 </ul>
                             </div>
+                            <!-- NAV DESKTOP -->
+                            <!-- NAV MOBILE -->
                             <i class="nav-icon material-icons">dehaze</i>
                             <div class="nav-menu nav-mobile col-sm-12 col-md-7 col-lg-5">
                                 <ul>
@@ -73,6 +80,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            <!-- NAV MOBILE -->
                         </div>
                     </div>
                 </section>
@@ -114,7 +122,7 @@
                 {
                     @foreach (PlaceInCirclePhoto photo in Model.Place.PlaceInCirclePhotos)
                     {
-                        <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-up" data-aos-duration="1200"
+                        <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos-duration="1200"
                              data-aos-easing="ease-in-out" data-aos-once="true" data-aos-anchor-placement="top-center">
                             <div class="circles-image">
                                 <img src="~/img/Places/@photo.PhotoInCircle" alt="item">
@@ -140,11 +148,12 @@
                 @foreach (PlacePhoto photo in Model.Place.PlacePhotos)
                 {
                     <div class="place col-lg-12 col-md-12">
-                        <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
+                        <div class="place-image col-lg-6 col-md-6" data-aos-duration="1300"
                              data-aos-easing="ease-in-out" data-aos-once="true">
                             <img src="~/img/Places/@photo.Photo" alt="sandwiches">
                         </div>
-                        <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info col-lg-6 col-md-6" data-aos-duration="1300"
+                             data-aos-easing="ease-in-out" data-aos-once="true">
                             <div class="place-info-text">
                                 <p>@photo.Text</p>
                             </div>
@@ -162,12 +171,13 @@
                 {
                     <div class="place col-md-12 col-sm-12">
 
-                        <div class="place-info col-md-6 col-sm-12">
+                        <div class="place-info col-md-6 col-sm-12" data-aos-duration="1300"
+                             data-aos-easing="ease-in-out" data-aos-once="true">
                             <div class="place-info-text">
                                 <p>@photo.Text</p>
                             </div>
                         </div>
-                        <div class="place-image col-md-6 col-sm-12" data-aos="fade-right" data-aos-duration="1300"
+                        <div class="place-image col-md-6 col-sm-12" data-aos-duration="1300"
                              data-aos-easing="ease-in-out" data-aos-once="true">
                             <img src="~/img/Places/@photo.Photo" alt="sandwiches">
                         </div>
@@ -197,16 +207,16 @@
                         {
                             @foreach (PlaceMenuItem menuItem in Model.Place.PlaceMenuItems)
                             {
-                            <div class="menu-item col-lg-6 col-md-12 col-sm-12">
-                                <div class="dish-heading">
-                                    <h2>@menuItem.ItemName</h2>
-                                    <h2 class="price">@menuItem.ItemPrice₼</h2>
+                                <div class="menu-item col-lg-6 col-md-12 col-sm-12">
+                                    <div class="dish-heading">
+                                        <h2>@menuItem.ItemName</h2>
+                                        <h2 class="price">@menuItem.ItemPrice₼</h2>
+                                    </div>
+                                    <hr>
+                                    <div class="dish-text">
+                                        <p>@menuItem.ItemDescription</p>
+                                    </div>
                                 </div>
-                                <hr>
-                                <div class="dish-text">
-                                    <p>@menuItem.ItemDescription</p>
-                                </div>
-                            </div>
                             }
                         }
                     </div>
@@ -224,7 +234,14 @@
             </div>
             <div class="rating-stars">
                 <div class="stars">
-                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                    @for (int i = 0; i < Model.Place.Rating; i++)
+                    {
+                        <span class="active-star">⭐</span>
+                    }
+                    @for (int i = 0; i < (5 - Model.Place.Rating); i++)
+                    {
+                        <span>☆</span>
+                    }
                 </div>
             </div>
             <div class="comments-section">
@@ -235,9 +252,16 @@
                         <div class="comment col-sm-12 col-md-12 col-lg-5">
                             <div class="user-texts">
                                 <div class="upperpart-texts">
-                                    <h5 class="username">@Auth.User.Fullname</h5>
+                                    <h5 class="username">@item.Username</h5>
                                     <div class="stars">
-                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                        @for (int i = 0; i < item.Rating; i++)
+                                        {
+                                            <span>★</span>
+                                        }
+                                        @for (int j = 0; j < (5 - item.Rating); j++)
+                                        {
+                                            <span>☆</span>
+                                        }
                                     </div>
                                 </div>
                                 <div class="lowerpart-texts">
@@ -252,21 +276,62 @@
             </div>
             <div class="add-comment-section">
                 <div class="add-comment col-lg-6 col-sm-12">
+                    @if (Auth.User == null)
+                    {
+                        <h6 class="log-message">Please <a asp-controller="Register" asp-action="index">Register</a> or <a asp-controller="Login" asp-action="index">Log in</a> to leave your comment!</h6>
+                    }
+                    @if (Auth.User != null)
+                    {
                         <h5>Add your comment about this place...</h5>
-                        <form asp-controller="Places" asp-action="AddComment" method="post">
-                            @for (int i = 0; i < Model.Comments.Count; i++)
-                            {
-                                <input type="hidden" asp-for="@Model.Comments[i].PlaceId" name="PlaceId" value="@Model.Place.Id" />
-                                <textarea asp-for="@Model.Comments[i].CommentText" name="CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
+                        @foreach (Comment comment in Model.Place.Comments)
+                        {
+                            <form asp-controller="Places" asp-action="AddComment" method="post">
+                                <input type="hidden" asp-for="@comment.PlaceId" name="PlaceId" value="@Model.Place.Id" />
+                                <textarea asp-for="@comment.CommentText" name="CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
+                                <span class="text-danger" asp-validation-for="@comment.CommentText"></span>
                                 <div class="comment-btns">
+ 
                                     <div class="stars">
-                                        <span value="1">☆</span><span value="2">☆</span><span value="3">☆</span><span data-value="4">☆</span><span data-value="5">☆</span>
+                                        <input asp-for="@comment.Rating" type="radio" id="star5" name="rate" value="5" />
+                                        <label for="star5" title="5">5 stars</label>
+                                        <input asp-for="@comment.Rating" type="radio" id="star4" name="rate" value="4" />
+                                        <label for="star4" title="4">4 stars</label>
+                                        <input asp-for="@comment.Rating" type="radio" id="star3" name="rate" value="3" />
+                                        <label for="star3" title="3">3 stars</label>
+                                        <input asp-for="@comment.Rating" type="radio" id="star2" name="rate" value="2" />
+                                        <label for="star2" title="2">2 stars</label>
+                                        <input asp-for="@comment.Rating" type="radio" id="star1" name="rate" value="1" />
+                                        <label for="star1" title="1">1 star</label>
                                     </div>
                                     <button type="submit">Add Comment</button>
                                 </div>
-                            }
                             </form>
-                    </div>
+                        }
+                        @*@for (int i = 0; i < Model.Comments.Count; i++)
+                        {
+                            <form asp-controller="Places" asp-action="AddComment" method="post">
+                                <input type="hidden" asp-for="@Model.Comments[i].PlaceId" name="PlaceId" value="@Model.Place.Id" />
+                                <textarea asp-for="@Model.Comments[i].CommentText" name="CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
+                                <span class="text-danger" asp-validation-for="@Model.Comments[i].CommentText"></span>
+                                <div class="comment-btns">
+                                    <div class="stars">
+                                        <input asp-for="@Model.Comments[i].Rating" type="radio" id="star5" name="rate" value="5" />
+                                        <label for="star5" title="5">5 stars</label>
+                                        <input asp-for="@Model.Comments[i].Rating" type="radio" id="star4" name="rate" value="4" />
+                                        <label for="star4" title="4">4 stars</label>
+                                        <input asp-for="@Model.Comments[i].Rating" type="radio" id="star3" name="rate" value="3" />
+                                        <label for="star3" title="3">3 stars</label>
+                                        <input asp-for="@Model.Comments[i].Rating" type="radio" id="star2" name="rate" value="2" />
+                                        <label for="star2" title="2">2 stars</label>
+                                        <input asp-for="@Model.Comments[i].Rating" type="radio" id="star1" name="rate" value="1" />
+                                        <label for="star1" title="1">1 star</label>
+                                    </div>
+                                    <button type="submit">Add Comment</button>
+                                </div>
+                            </form>
+                        }*@
+                    }
+                </div>
             </div>
         </div>
     </section>
@@ -287,11 +352,15 @@
                             <div class="form-row" id="row1">
                                 <input type="hidden" asp-for="Reservation.PlaceId" name="PlaceId" value="@Model.Place.Id" />
                                 <input type="text" asp-for="Reservation.Fullname" name="Fullname" placeholder="Full Name">
+                                <span class="text-danger" asp-validation-for="Reservation.Fullname"></span>
                                 <input type="text" asp-for="Reservation.Phone" name="Phone" placeholder="Phone Number">
+                                <span class="text-danger" asp-validation-for="Reservation.Phone"></span>
                             </div>
                             <div class="form-row" id="row2">
                                 <input type="text" asp-for="Reservation.numOfPersons" name="numOfPersons" placeholder="Number of persons">
+                                <span class="text-danger" asp-validation-for="Reservation.numOfPersons"></span>
                                 <input type="date" asp-for="Reservation.Date" name="Date">
+                                <span class="text-danger" asp-validation-for="Reservation.Date"></span>
                                 <select asp-for="Reservation.Time" name="Time">
                                     <option value="0">Time</option>
                                     <option value="09:00">09:00</option>
@@ -323,6 +392,7 @@
                                     <option value="22:00">22:00</option>
                                     <option value="22:30">22:30</option>
                                 </select>
+                                <span class="text-danger" asp-validation-for="Reservation.Time"></span>
                             </div>
                             <button type="submit">Reserve</button>
                         </form>

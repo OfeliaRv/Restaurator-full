@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Restaurator.Models
 {
@@ -20,13 +21,7 @@ namespace Restaurator.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         
-        [Required]
-        [MaxLength(150)]
-        [Compare("Password")]
-        [DataType(DataType.Password)]
-        public string repeatPassword { get; set; }
-
-        public Comment Comment { get; set; }
+        public List<Comment> Comments { get; set; }
 
         [MaxLength(100)]
         public string Token { get; set; }

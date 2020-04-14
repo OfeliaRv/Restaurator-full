@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurator.Data;
 
 namespace Restaurator.Migrations
 {
     [DbContext(typeof(RestauratorDbContext))]
-    partial class RestauratorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200407164936_updates3")]
+    partial class updates3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +52,8 @@ namespace Restaurator.Migrations
 
                     b.HasIndex("PlaceId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Comments");
                 });
@@ -166,7 +169,7 @@ namespace Restaurator.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("ItemPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.Property<int>("PlaceId")
                         .HasColumnType("int");
@@ -277,8 +280,8 @@ namespace Restaurator.Migrations
                         .IsRequired();
 
                     b.HasOne("Restaurator.Models.User", "User")
-                        .WithMany("Comments")
-                        .HasForeignKey("UserId")
+                        .WithOne("Comment")
+                        .HasForeignKey("Restaurator.Models.Comment", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -1,3 +1,5 @@
+﻿@charset "UTF-8";
+
 @media (min-width: 1200px) {
     .container {
         max-width: 1300px !important;
@@ -81,44 +83,6 @@ option {
     font-family: "Cormorant Garamond";
 }
 
-.top-heading {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-    .top-heading .heading1,
-    .top-heading .heading2 {
-        z-index: 6;
-        font-family: "Cormorant Garamond", serif;
-        font-style: italic;
-        line-height: 104px;
-        font-weight: 700;
-        font-size: 134px;
-        margin: 0px;
-        color: white;
-    }
-
-    .top-heading .baku {
-        font-family: "Montserrat", sans-serif;
-        line-height: 12px;
-        letter-spacing: 8px;
-        font-weight: 600;
-        font-size: 13px;
-        margin-top: 40px;
-        color: #e7e7e0;
-    }
-
-@media screen and (max-width: 580px) {
-    .top-heading .heading1,
-    .top-heading .heading2 {
-        font-size: 82px;
-    }
-}
-
 .section-heading {
     text-align: center;
 }
@@ -152,83 +116,6 @@ option {
             text-decoration: none;
             color: yellow;
         }
-
-.three-circles-withpic {
-    background: url(../../img/home-img/alwaysfresh.jpg);
-    height: auto;
-    background-position: center;
-}
-
-    .three-circles-withpic .circles-options {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        margin-top: 40px;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    }
-
-        .three-circles-withpic .circles-options .circles-option {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-
-            .three-circles-withpic .circles-options .circles-option .circles-image {
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                justify-content: center;
-                border-radius: 100%;
-                overflow: hidden;
-                width: 330px;
-                height: 330px;
-            }
-
-                .three-circles-withpic .circles-options .circles-option .circles-image img {
-                    height: 330px;
-                    width: 330px;
-                }
-
-            .three-circles-withpic .circles-options .circles-option .circles-text {
-                font-weight: 300;
-                text-align: center;
-                margin-top: 25px;
-            }
-
-                .three-circles-withpic .circles-options .circles-option .circles-text h1 {
-                    font-family: "Cormorant Garamond";
-                    font-size: 42px;
-                    font-style: italic;
-                }
-
-                    .three-circles-withpic .circles-options .circles-option .circles-text h1 span {
-                        font-weight: 700;
-                    }
-
-                .three-circles-withpic .circles-options .circles-option .circles-text p {
-                    font-family: "Montserrat";
-                    color: #333131;
-                    font-size: 16px;
-                }
-
-@media screen and (max-width: 992px) {
-    .three-circles-withpic {
-        background: none;
-    }
-}
 
 .grid {
     margin-top: 30px;
@@ -392,56 +279,69 @@ option {
     }
 }
 
-.stars {
+.add-comment-section .stars {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+    .add-comment-section .stars:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+    }
+
+    .add-comment-section .stars:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #ccc;
+    }
+
+        .add-comment-section .stars:not(:checked) > label:before {
+            content: "★ ";
+        }
+
+    .add-comment-section .stars > input:checked ~ label {
+        color: #ffc700;
+    }
+
+    .add-comment-section .stars:not(:checked) > label:hover,
+    .add-comment-section .stars:not(:checked) > label:hover ~ label {
+        color: #deb217;
+    }
+
+    .add-comment-section .stars > input:checked + label:hover,
+    .add-comment-section .stars > input:checked + label:hover ~ label,
+    .add-comment-section .stars > input:checked ~ label:hover,
+    .add-comment-section .stars > input:checked ~ label:hover ~ label,
+    .add-comment-section .stars > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }
+
+.rating-stars .stars {
+    margin: 20px 0;
+    padding: 26px;
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    margin: 5px 0;
 }
 
-    .stars span {
-        margin: 0 2px;
-    }
-
-.add-comment-section .stars {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    cursor: pointer;
+.rating-stars .active-star {
+    font-size: 33px !important;
 }
 
-    .add-comment-section .stars > span {
-        display: inline-block;
-        position: relative;
-        width: 1.1em;
-    }
-
-        .add-comment-section .stars > span:hover:before,
-        .add-comment-section .stars > span:hover ~ span:before {
-            content: "\2605";
-            position: absolute;
-        }
-
-.rating-stars {
-    height: 244px;
-    background-position: bottom;
-    background-image: url(../../img/lenta4.png);
-    background-size: 47%;
-    background-repeat: no-repeat;
-    margin: 40px 0;
+.rating-stars span {
+    margin: auto 10px;
+    font-size: 55px;
 }
-
-    .rating-stars .stars {
-        margin: 20px 0;
-        padding: 18px;
-    }
-
-    .rating-stars span {
-        margin: 0 10px;
-        font-size: 60px;
-    }
 
 @media screen and (max-width: 375px) {
     .rating-stars {
@@ -754,6 +654,17 @@ option {
         padding: 15px 25px 0 25px;
     }
 
+        .add-comment-section .add-comment .log-message {
+            font-family: "Cormorant Garamond";
+            color: #3e3e3e;
+            font-size: 23px;
+            text-align: center;
+        }
+
+            .add-comment-section .add-comment .log-message a {
+                color: orange;
+            }
+
         .add-comment-section .add-comment h5 {
             margin: 20px 0;
             font-family: "Montserrat";
@@ -1018,6 +929,136 @@ option {
     }
 }
 
+.top-heading {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+    .top-heading .heading1,
+    .top-heading .heading2 {
+        z-index: 6;
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        line-height: 104px;
+        font-weight: 700;
+        font-size: 134px;
+        margin: 0px;
+        color: white;
+    }
+
+    .top-heading .baku {
+        font-family: "Montserrat", sans-serif;
+        line-height: 12px;
+        letter-spacing: 8px;
+        font-weight: 600;
+        font-size: 13px;
+        margin-top: 40px;
+        color: #e7e7e0;
+    }
+
+.success h1 {
+    border: 1px solid white;
+    background-color: white;
+    color: black !important;
+    border-radius: 17px;
+    font-size: 53px !important;
+}
+
+.success p {
+    font-size: 22px;
+    margin: 10px 0;
+    color: white;
+    font-family: montserrat;
+}
+
+@media screen and (max-width: 580px) {
+    .top-heading .heading1,
+    .top-heading .heading2 {
+        font-size: 82px;
+    }
+}
+
+.three-circles-withpic {
+    background: url(../../img/home-img/alwaysfresh.jpg);
+    height: auto;
+    background-position: center;
+}
+
+    .three-circles-withpic .circles-options {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin-top: 40px;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+        .three-circles-withpic .circles-options .circles-option {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+            .three-circles-withpic .circles-options .circles-option .circles-image {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                border-radius: 100%;
+                overflow: hidden;
+                width: 330px;
+                height: 330px;
+            }
+
+                .three-circles-withpic .circles-options .circles-option .circles-image img {
+                    height: 330px;
+                    width: 330px;
+                }
+
+            .three-circles-withpic .circles-options .circles-option .circles-text {
+                font-weight: 300;
+                text-align: center;
+                margin-top: 25px;
+            }
+
+                .three-circles-withpic .circles-options .circles-option .circles-text h1 {
+                    font-family: "Cormorant Garamond";
+                    font-size: 42px;
+                    font-style: italic;
+                }
+
+                    .three-circles-withpic .circles-options .circles-option .circles-text h1 span {
+                        font-weight: 700;
+                    }
+
+                .three-circles-withpic .circles-options .circles-option .circles-text p {
+                    font-family: "Montserrat";
+                    color: #333131;
+                    font-size: 16px;
+                }
+
+@media screen and (max-width: 992px) {
+    .three-circles-withpic {
+        background: none;
+    }
+}
+
 #homepage-content {
     position: relative;
     overflow: hidden;
@@ -1096,6 +1137,12 @@ option {
             .background-img-container .background-img .nav-bar .nav-menu {
                 margin: 13px 0;
                 padding: 0;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: end;
+                -ms-flex-pack: end;
+                justify-content: flex-end;
             }
 
                 .background-img-container .background-img .nav-bar .nav-menu ul {
@@ -1293,6 +1340,7 @@ footer {
             -webkit-box-direction: normal;
             -ms-flex-direction: column;
             flex-direction: column;
+            font-family: montserrat;
         }
 
             footer .footer-content .footer-menu ul {
@@ -1346,6 +1394,9 @@ footer {
                 -webkit-box-pack: justify;
                 -ms-flex-pack: justify;
                 justify-content: space-between;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
             }
 }
 

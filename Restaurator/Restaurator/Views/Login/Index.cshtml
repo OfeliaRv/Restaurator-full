@@ -4,7 +4,6 @@
 }
 
 <body class="authorization">
-
     <!-- NAV + TOP PART OF PAGE -->
     <div class="background-img-container">
         <div class="background-img">
@@ -16,7 +15,7 @@
                             <div class="logo col-sm-12 col-md-5 col-lg-2">
                                 <h1><a asp-controller="Places" asp-action="index">Restaurator</a></h1>
                             </div>
-                            <div class="nav-menu col-sm-12 col-md-6 col-lg-4">
+                            <div class="nav-menu col-sm-12 col-md-6 col-lg-3">
                                 <ul>
                                     <li><a  asp-controller="Places" asp-action="index">Home</a></li>
                                     <li><a  asp-controller="Register" asp-action="index">Register</a></li>
@@ -55,7 +54,7 @@
                     <div class="form-btn">
                         <button type="submit" class="btn btn-primary">Log In</button>
                     </div>
-                    <p class="form-text">Do not have an account? <a href="./register.html">Register here!</a></p>
+                    <p class="form-text">Do not have an account? <a asp-controller="Register" asp-action="index">Register here!</a></p>
                 </form>
             </div>
         </div>

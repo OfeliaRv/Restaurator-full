@@ -42,11 +42,11 @@ namespace Restaurator.Controllers
 
                         Response.Cookies.Append("token", user.Token, new Microsoft.AspNetCore.Http.CookieOptions
                         {
-                            Expires = DateTime.Now.AddYears(1),
+                            Expires = DateTime.Now.AddDays(5),
                             HttpOnly = true
                         });
 
-                        return RedirectToAction("index", "home");
+                        return RedirectToAction("index", "places");
                     }
                 }
 

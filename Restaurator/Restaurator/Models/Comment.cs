@@ -5,14 +5,17 @@ namespace Restaurator.Models
 {
     public class Comment
     {
+        [Key]
         public int Id { get; set; }
         
         [Required]
         [Range(0,5)]
-        public decimal Rating { get; set; }
+        public int Rating { get; set; }
+
+        public string Username { get; set; }
 
         [Required]
-        [MaxLength(500)]
+        [MaxLength(500, ErrorMessage = "Maximum number of characters is 500.")]
         public string CommentText { get; set; }
        
         public int PlaceId { get; set; }

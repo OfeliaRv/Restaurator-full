@@ -18,6 +18,7 @@
                                 <div class="logo col-sm-12 col-md-5 col-lg-2">
                                     <h1><a asp-controller="Places" asp-action="index">Restaurator</a></h1>
                                 </div>
+                                <!-- NAV DESKTOP -->
                                 <div class="nav-menu nav-desktop col-sm-12 col-md-7 col-lg-4">
                                     <ul>
                                         <li><a asp-controller="Places" asp-action="index">Home</a></li>
@@ -38,6 +39,8 @@
                                         }
                                     </ul>
                                 </div>
+                                <!-- NAV DESKTOP -->
+                                <!-- NAV MOBILE -->
                                 <i class="nav-icon material-icons">dehaze</i>
                                 <div class="nav-menu nav-mobile col-sm-12 col-md-7 col-lg-5">
                                     <ul>
@@ -56,6 +59,7 @@
                                         }
                                     </ul>
                                 </div>
+                                <!-- NAV MOBILE -->
                             </div>
                         </div>
                     </section>
@@ -91,7 +95,7 @@
                     <hr>
                 </div>
                 <div class="circles-options col-lg-12 col-md-12 col-sm-12">
-                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-up" data-aos-duration="1200"
+                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos-duration="1200"
                          data-aos-easing="ease-in-out" data-aos-once="true" data-aos-anchor-placement="top-center">
                         <div class="circles-image">
                             <img src="../img/home-img/picture3.png" alt="img1">
@@ -105,7 +109,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-down"
+                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" 
                          data-aos-duration="1200" data-aos-delay="200" data-aos-easing="ease-in-out" data-aos-once="true"
                          data-aos-anchor-placement="top-center">
                         <div class="circles-image">
@@ -119,7 +123,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos="fade-up" data-aos-delay="400"
+                    <div class="circles-option col-sm-12 col-md-10 col-lg-4" data-aos-delay="400"
                          data-aos-duration="1200" data-aos-easing="ease-in-out" data-aos-once="true"
                          data-aos-anchor-placement="top-center">
                         <div class="circles-image">
@@ -182,17 +186,17 @@
                     </button>
                 </div>
             </div>
-
             <!-- GRID DESKTOP -->
             <div class="grid desktop col-lg-12 col-md-12">
                 @foreach (Place item in Model)
                 {
-                    <div class="place @item.PlaceType.ToLower().Split(',') col-lg-12 col-md-12">
-                        <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
+                    <div class="place @item.Type1 @item.Type2 col-lg-12 col-md-12">
+                        <div class="place-image col-lg-6 col-md-6" data-aos-duration="1300"
                              data-aos-easing="ease-in-out" data-aos-once="true">
                             <img src="../img/Places/@item.MainImage" alt="main">
                         </div>
-                        <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info col-lg-6 col-md-6" data-aos-duration="1300"
+                             data-aos-easing="ease-in-out" data-aos-once="true">
                             <div class="place-info-text">
                                 <h2 style="padding: 17px;">@item.NamePt1 @item.NamePt2</h2>
                                 <p>
@@ -210,12 +214,13 @@
             <div class="grid mobile">
                 @foreach (Place item in Model)
                 {
-                    <div class="place @item.PlaceType.ToLower().Split(',') col-lg-12 col-md-12">
-                        <div class="place-image col-lg-6 col-md-6" data-aos="fade-right" data-aos-duration="1300"
+                    <div class="place @item.Type1 @item.Type2 col-lg-12 col-md-12">
+                        <div class="place-image col-lg-6 col-md-6" data-aos-duration="1300"
                              data-aos-easing="ease-in-out" data-aos-once="true">
                             <img src="../img/Places/@item.MainImage" alt="main">
                         </div>
-                        <div class="place-info col-lg-6 col-md-6">
+                        <div class="place-info col-lg-6 col-md-6" data-aos-duration="1300"
+                             data-aos-easing="ease-in-out" data-aos-once="true">
                             <div class="place-info-text">
                                 <h2 style="padding: 17px;">@item.NamePt1 @item.NamePt2 </h2>
                                 <p>

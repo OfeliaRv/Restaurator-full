@@ -19,12 +19,5 @@ namespace Restaurator.ViewModels
         [MinLength(6, ErrorMessage = "Minimum number of characters is 6.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        [MaxLength(50, ErrorMessage = "Maximum number of characters is 50.")]
-        [MinLength(6, ErrorMessage = "Minimum number of characters is 6.")]
-        [DataType(DataType.Password)]
-        public string repeatPassword { get; set; }
-
     }
 }
