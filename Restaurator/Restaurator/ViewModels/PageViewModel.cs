@@ -11,7 +11,7 @@ namespace Restaurator.ViewModels
 
         public Reservation Reservation { get; set; }
 
-        public List<Comment> Comments { get; set; }
+        public Comment Comment { get; set; }
 
         public List<PlaceMenuItem> PlaceMenuItems { get; set; }
 

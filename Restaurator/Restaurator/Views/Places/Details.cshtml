@@ -226,7 +226,7 @@
     </section>
     <!-- BEST DISHES -->
     <!-- RATING AND REVIEWS -->
-    <section class="rating-and-reviews">
+    <section class="rating-and-reviews" id="reviews">
         <div class="container">
             <div class="section-heading" style="margin-top: -7px;">
                 <h1>Rating And Reviews</h1>
@@ -283,53 +283,26 @@
                     @if (Auth.User != null)
                     {
                         <h5>Add your comment about this place...</h5>
-                        @foreach (Comment comment in Model.Place.Comments)
-                        {
-                            <form asp-controller="Places" asp-action="AddComment" method="post">
-                                <input type="hidden" asp-for="@comment.PlaceId" name="PlaceId" value="@Model.Place.Id" />
-                                <textarea asp-for="@comment.CommentText" name="CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
-                                <span class="text-danger" asp-validation-for="@comment.CommentText"></span>
-                                <div class="comment-btns">
- 
-                                    <div class="stars">
-                                        <input asp-for="@comment.Rating" type="radio" id="star5" name="rate" value="5" />
-                                        <label for="star5" title="5">5 stars</label>
-                                        <input asp-for="@comment.Rating" type="radio" id="star4" name="rate" value="4" />
-                                        <label for="star4" title="4">4 stars</label>
-                                        <input asp-for="@comment.Rating" type="radio" id="star3" name="rate" value="3" />
-                                        <label for="star3" title="3">3 stars</label>
-                                        <input asp-for="@comment.Rating" type="radio" id="star2" name="rate" value="2" />
-                                        <label for="star2" title="2">2 stars</label>
-                                        <input asp-for="@comment.Rating" type="radio" id="star1" name="rate" value="1" />
-                                        <label for="star1" title="1">1 star</label>
-                                    </div>
-                                    <button type="submit">Add Comment</button>
+                        <form asp-controller="Places" asp-action="AddComment" method="post">
+                            <input type="hidden" asp-for="@Model.Comment.PlaceId" name="PlaceId" value="@Model.Place.Id" />
+                            <textarea asp-for="@Model.Comment.CommentText" name="CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
+                            <span class="text-danger" asp-validation-for="@Model.Comment.CommentText"></span>
+                            <div class="comment-btns">
+                                <div class="stars">
+                                    <input asp-for="@Model.Comment.Rating" type="radio" id="star5" name="Rating" value="5" />
+                                    <label for="star5" title="5">5 stars</label>
+                                    <input asp-for="@Model.Comment.Rating" type="radio" id="star4" name="Rating" value="4" />
+                                    <label for="star4" title="4">4 stars</label>
+                                    <input asp-for="@Model.Comment.Rating" type="radio" id="star3" name="Rating" value="3" />
+                                    <label for="star3" title="3">3 stars</label>
+                                    <input asp-for="@Model.Comment.Rating" type="radio" id="star2" name="Rating" value="2" />
+                                    <label for="star2" title="2">2 stars</label>
+                                    <input asp-for="@Model.Comment.Rating" type="radio" id="star1" name="Rating" value="1" />
+                                    <label for="star1" title="1">1 star</label>
                                 </div>
-                            </form>
-                        }
-                        @*@for (int i = 0; i < Model.Comments.Count; i++)
-                        {
-                            <form asp-controller="Places" asp-action="AddComment" method="post">
-                                <input type="hidden" asp-for="@Model.Comments[i].PlaceId" name="PlaceId" value="@Model.Place.Id" />
-                                <textarea asp-for="@Model.Comments[i].CommentText" name="CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
-                                <span class="text-danger" asp-validation-for="@Model.Comments[i].CommentText"></span>
-                                <div class="comment-btns">
-                                    <div class="stars">
-                                        <input asp-for="@Model.Comments[i].Rating" type="radio" id="star5" name="rate" value="5" />
-                                        <label for="star5" title="5">5 stars</label>
-                                        <input asp-for="@Model.Comments[i].Rating" type="radio" id="star4" name="rate" value="4" />
-                                        <label for="star4" title="4">4 stars</label>
-                                        <input asp-for="@Model.Comments[i].Rating" type="radio" id="star3" name="rate" value="3" />
-                                        <label for="star3" title="3">3 stars</label>
-                                        <input asp-for="@Model.Comments[i].Rating" type="radio" id="star2" name="rate" value="2" />
-                                        <label for="star2" title="2">2 stars</label>
-                                        <input asp-for="@Model.Comments[i].Rating" type="radio" id="star1" name="rate" value="1" />
-                                        <label for="star1" title="1">1 star</label>
-                                    </div>
-                                    <button type="submit">Add Comment</button>
-                                </div>
-                            </form>
-                        }*@
+                                <button type="submit" id="submitComment">Add Comment</button>
+                            </div>
+                        </form>
                     }
                 </div>
             </div>

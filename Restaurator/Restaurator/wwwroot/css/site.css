@@ -287,7 +287,8 @@ option {
 
     .add-comment-section .stars:not(:checked) > input {
         position: absolute;
-        top: -9999px;
+        visibility: hidden;
+        top: auto;
     }
 
     .add-comment-section .stars:not(:checked) > label {
