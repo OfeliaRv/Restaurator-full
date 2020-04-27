@@ -275,6 +275,7 @@
                 }
             </div>
             <div class="add-comment-section">
+                <div id="comment-placeholder"></div>
                 <div class="add-comment col-lg-6 col-sm-12">
                     @if (Auth.User == null)
                     {
@@ -283,26 +284,28 @@
                     @if (Auth.User != null)
                     {
                         <h5>Add your comment about this place...</h5>
-                        <form asp-controller="Places" asp-action="AddComment" method="post">
-                            <input type="hidden" asp-for="@Model.Comment.PlaceId" name="PlaceId" value="@Model.Place.Id" />
-                            <textarea asp-for="@Model.Comment.CommentText" name="CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10"></textarea>
-                            <span class="text-danger" asp-validation-for="@Model.Comment.CommentText"></span>
-                            <div class="comment-btns">
-                                <div class="stars">
-                                    <input asp-for="@Model.Comment.Rating" type="radio" id="star5" name="Rating" value="5" />
-                                    <label for="star5" title="5">5 stars</label>
-                                    <input asp-for="@Model.Comment.Rating" type="radio" id="star4" name="Rating" value="4" />
-                                    <label for="star4" title="4">4 stars</label>
-                                    <input asp-for="@Model.Comment.Rating" type="radio" id="star3" name="Rating" value="3" />
-                                    <label for="star3" title="3">3 stars</label>
-                                    <input asp-for="@Model.Comment.Rating" type="radio" id="star2" name="Rating" value="2" />
-                                    <label for="star2" title="2">2 stars</label>
-                                    <input asp-for="@Model.Comment.Rating" type="radio" id="star1" name="Rating" value="1" />
-                                    <label for="star1" title="1">1 star</label>
+                        <div class="comment-form">
+                            <form asp-controller="Places" asp-action="AddComment" method="post">
+                                <input type="hidden" asp-for="@Model.Comment.PlaceId" name="PlaceId" value="@Model.Place.Id" />
+                                <textarea asp-for="@Model.Comment.CommentText" name="CommentText" placeholder="  Comment here..." maxlength="3000" cols="30" rows="10" required></textarea>
+                                <div class="comment-btns">
+                                    <div class="stars">
+                                        <input asp-for="@Model.Comment.Rating" type="radio" id="star5" name="Rating" value="5" />
+                                        <label for="star5" title="5">5 stars</label>
+                                        <input asp-for="@Model.Comment.Rating" type="radio" id="star4" name="Rating" value="4" />
+                                        <label for="star4" title="4">4 stars</label>
+                                        <input asp-for="@Model.Comment.Rating" type="radio" id="star3" name="Rating" value="3" />
+                                        <label for="star3" title="3">3 stars</label>
+                                        <input asp-for="@Model.Comment.Rating" type="radio" id="star2" name="Rating" value="2" />
+                                        <label for="star2" title="2">2 stars</label>
+                                        <input asp-for="@Model.Comment.Rating" type="radio" id="star1" name="Rating" value="1" required />
+                                        <label for="star1" title="1">1 star</label>
+                                    </div>
+                                    <button type="submit" id="submitComment">Add Comment</button>
                                 </div>
-                                <button type="submit" id="submitComment">Add Comment</button>
-                            </div>
-                        </form>
+                                <span id="msg"></span>
+                            </form>
+                        </div>
                     }
                 </div>
             </div>
@@ -324,18 +327,14 @@
                         <form class="reservation-form col-lg-10" asp-controller="Places" asp-action="MakeReservation" method="post">
                             <div class="form-row" id="row1">
                                 <input type="hidden" asp-for="Reservation.PlaceId" name="PlaceId" value="@Model.Place.Id" />
-                                <input type="text" asp-for="Reservation.Fullname" name="Fullname" placeholder="Full Name">
-                                <span class="text-danger" asp-validation-for="Reservation.Fullname"></span>
-                                <input type="text" asp-for="Reservation.Phone" name="Phone" placeholder="Phone Number">
-                                <span class="text-danger" asp-validation-for="Reservation.Phone"></span>
+                                <input type="text" asp-for="Reservation.Fullname" name="Fullname" placeholder="Full Name" required>
+                                <input type="text" asp-for="Reservation.Phone" name="Phone" placeholder="Phone Number" required>
                             </div>
                             <div class="form-row" id="row2">
-                                <input type="text" asp-for="Reservation.numOfPersons" name="numOfPersons" placeholder="Number of persons">
-                                <span class="text-danger" asp-validation-for="Reservation.numOfPersons"></span>
-                                <input type="date" asp-for="Reservation.Date" name="Date">
-                                <span class="text-danger" asp-validation-for="Reservation.Date"></span>
-                                <select asp-for="Reservation.Time" name="Time">
-                                    <option value="0">Time</option>
+                                <input type="text" asp-for="Reservation.numOfPersons" name="numOfPersons" placeholder="Number of persons" required>
+                                <input type="date" asp-for="Reservation.Date" name="Date" required>
+                                <select asp-for="Reservation.Time" name="Time" required>
+                                    <option value="">Time</option>
                                     <option value="09:00">09:00</option>
                                     <option value="09:30">09:30</option>
                                     <option value="10:00">10:00</option>
@@ -365,7 +364,6 @@
                                     <option value="22:00">22:00</option>
                                     <option value="22:30">22:30</option>
                                 </select>
-                                <span class="text-danger" asp-validation-for="Reservation.Time"></span>
                             </div>
                             <button type="submit">Reserve</button>
                         </form>

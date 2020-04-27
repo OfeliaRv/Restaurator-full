@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using Restaurator.Data;
 using Restaurator.Injection;
@@ -56,9 +54,11 @@ namespace Restaurator.Controllers
             return View(place);
         }
 
+     
         [HttpPost]
         public async Task<IActionResult> AddComment(Comment commentModel)
         {
+
             if (ModelState.IsValid)
             {
                 Comment comment = new Comment
@@ -78,11 +78,10 @@ namespace Restaurator.Controllers
 
                 return RedirectToAction("details", "Places", new { id = commentModel.PlaceId }, "reviews");
             }
-
-            ModelState.AddModelError("Rating", "Please, rate the place");
-
-           IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-           return BadRequest(allErrors);
+            else
+            {
+                return RedirectToAction("details", "Places", new { id = commentModel.PlaceId }, "reviews");
+            }
         }
 
         [HttpPost]
@@ -90,16 +89,7 @@ namespace Restaurator.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("Date", "Choose the date");
-                ModelState.AddModelError("Time", "Choose the time");
-
-                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                return BadRequest(allErrors);
-                //return View(allErrors);
-
-                //return RedirectToAction("details", "Places", new { id = reservationModel.PlaceId }, "reservation");    
-                //return View("details", reservationModel.PlaceId.ToString());
-                //return View(reservationModel);
+                return RedirectToAction("details", "Places", new { id = reservationModel.PlaceId }, "reservations");
             }
 
             Reservation reservation = new Reservation
@@ -115,17 +105,7 @@ namespace Restaurator.Controllers
             _context.Reservations.Add(reservation);
             _context.SaveChanges();
 
-            //if (reservation == null)
-            //{
-            //    ModelState.AddModelError("Date", "Choose the date");
-            //    ModelState.AddModelError("Time", "Choose the time");
-
-            //}
-            //else
-            //{
-
-                return RedirectToAction("Success", "Places");
-            //}
+            return RedirectToAction("Success", "Places");
         }
 
         public IActionResult Success()

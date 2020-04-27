@@ -282,7 +282,6 @@ option {
 .add-comment-section .stars {
     float: left;
     height: 46px;
-    padding: 0 10px;
 }
 
     .add-comment-section .stars:not(:checked) > input {
@@ -1074,9 +1073,10 @@ option {
 
     .background-img-container .background-img {
         position: relative;
-        height: 100%;
+        height: 100vh;
         z-index: -1;
         width: 100%;
+        background-position-y: 0px;
     }
 
         .background-img-container .background-img .nav-scrolled {
@@ -1146,7 +1146,7 @@ option {
                 justify-content: flex-end;
             }
 
-                .background-img-container .background-img .nav-bar .nav-menu ul {
+                .background-img-container .background-img .nav-bar .nav-menu ul, .background-img-container .background-img .nav-bar .nav-mobile ul {
                     display: -webkit-box;
                     display: -ms-flexbox;
                     display: flex;
@@ -1157,7 +1157,7 @@ option {
                     justify-content: center;
                 }
 
-                    .background-img-container .background-img .nav-bar .nav-menu ul li {
+                    .background-img-container .background-img .nav-bar .nav-menu ul li, .background-img-container .background-img .nav-bar .nav-mobile ul li {
                         list-style-type: none;
                         width: -webkit-max-content;
                         width: -moz-max-content;
@@ -1166,7 +1166,7 @@ option {
                         margin: 0 auto;
                     }
 
-                        .background-img-container .background-img .nav-bar .nav-menu ul li a {
+                        .background-img-container .background-img .nav-bar .nav-menu ul li a, .background-img-container .background-img .nav-bar .nav-mobile ul li a {
                             text-decoration: none;
                             font-weight: 700;
                             font-size: 14px;
@@ -1177,7 +1177,7 @@ option {
                             padding: 25px 0;
                         }
 
-                        .background-img-container .background-img .nav-bar .nav-menu ul li:hover {
+                        .background-img-container .background-img .nav-bar .nav-menu ul li:hover, .background-img-container .background-img .nav-bar .nav-mobile ul li:hover {
                             position: relative;
                             bottom: 5px;
                             -webkit-transition: 0.2s ease;
@@ -1185,7 +1185,7 @@ option {
                             margin-bottom: 5px;
                         }
 
-                            .background-img-container .background-img .nav-bar .nav-menu ul li:hover a {
+                            .background-img-container .background-img .nav-bar .nav-menu ul li:hover a, .background-img-container .background-img .nav-bar .nav-mobile ul li:hover a {
                                 color: #e2b948;
                             }
 
@@ -1342,6 +1342,7 @@ footer {
             -ms-flex-direction: column;
             flex-direction: column;
             font-family: montserrat;
+            text-align: center;
         }
 
             footer .footer-content .footer-menu ul {
