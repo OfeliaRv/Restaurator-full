@@ -1120,6 +1120,7 @@ option {
             .background-img-container .background-img .nav-bar .nav-mobile {
                 background-color: white;
                 border-radius: 23px;
+                margin: 0 auto;
             }
 
                 .background-img-container .background-img .nav-bar .nav-mobile ul {
@@ -1246,7 +1247,7 @@ option {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .background-img-container .background-img {
         background-size: auto !important;
     }
